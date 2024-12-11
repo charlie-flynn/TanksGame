@@ -10,11 +10,14 @@ class Actor;
 class Transform2D
 {
 public:
+	Transform2D(Actor *owner);
+	~Transform2D();
+
 	Mat3 GetLocalRotation() { return *m_localRotation; }
 	Vec2 GetLocalPosition() { return Vec2(m_localTranslation->m02, m_localTranslation->m12); }
 	Vec2 GetLocalScale() { return Vec2(m_localScale->m00, m_localScale->m11); }
 	float GetLocalRotationAngle() { return m_localRotationAngle; }
-	float GetGlobalRotationAngle() { return m_globalRotationAngle; }
+	float GetGlobalRotationAngle();
 
 	void SetLocalRotation(Mat3 rotation);
 	void SetLocalPosition(Vec2 position);
@@ -35,11 +38,11 @@ private:
 	Mat3* m_localRotation;
 	Mat3* m_localScale;
 	float m_localRotationAngle;
-	float m_globalRotationAngle;
 
 	// if we have to destroy these it will be morally okay
+	// it'd really suck tho
 	Transform2D* m_parent;
-	Transform2D* m_children;
+	// INSERT CHILDREN HERE (i dunno how to make a group of transform2d pointers)
 
 	Actor* m_owner;
 };

@@ -144,8 +144,8 @@
     <ClCompile Include="Transform2D.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Transform2D.h" />
     <ClInclude Include="Actor.h" />
+    <ClInclude Include="Transform2D.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

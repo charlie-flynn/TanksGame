@@ -1,8 +1,11 @@
 #include "raylib.h"
+#include "Transform2D.h"
 
 int main(void)
 {
     InitWindow(800, 450, "raylib [core] example - basic window");
+
+    Transform2D t = Transform2D(nullptr);
 
     while (!WindowShouldClose())
     {

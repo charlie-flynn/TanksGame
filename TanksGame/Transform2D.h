@@ -10,7 +10,7 @@ class Actor;
 class Transform2D
 {
 public:
-	Transform2D(Actor *owner);
+	Transform2D(Actor owner);
 	~Transform2D();
 
 	Mat3 GetLocalRotation() { return *m_localRotation; }
@@ -44,5 +44,5 @@ private:
 	Transform2D* m_parent;
 	// INSERT CHILDREN HERE (i dunno how to make a group of transform2d pointers)
 
-	Actor* m_owner;
+	Actor& m_owner;
 };

@@ -1,5 +1,6 @@
 #include "Transform2D.h"
-#include "Actor.h";
+#include "Actor.h"
+#include <cmath>
 
 Transform2D::Transform2D(Actor owner) 
 	: m_owner(owner), m_localMatrix(new Mat3), m_globalMatrix(new Mat3), m_localTranslation(new Mat3), m_localRotation(new Mat3), m_localScale(new Mat3)
@@ -20,13 +21,13 @@ Transform2D::~Transform2D()
 float Transform2D::GetGlobalRotationAngle()
 {
 	// atan2 a buncha stuff
-	return 0.0f;
+	return (float)atan2(m_globalMatrix->m01, m_globalMatrix->m00);;
 }
 
 void Transform2D::SetLocalRotation(Mat3 rotation)
 {
 	*m_localRotation = rotation;
-	//m_localRotationAngle = atan2 a buncha stuff
+	m_localRotationAngle = -(float)atan2(m_localRotation->m01, m_localRotation->m00);
 }
 
 void Transform2D::SetLocalPosition(Vec2 position)

@@ -12,7 +12,7 @@ public:
 	Actor();
 public:
 	~Actor();
-	Actor Instantiate(Actor *actor, Transform2D *transform,  Vec2 position, float rotation);
+	Actor Instantiate(Actor& actor, Transform2D *transform, const Vec2 position, const float rotation);
 	void Destroy(Actor* actor);
 	void OnEnable();
 	void OnDisable();

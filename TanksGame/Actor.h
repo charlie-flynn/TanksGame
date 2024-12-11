@@ -32,6 +32,7 @@ private:
 	Transform2D *m_transform;
 	bool m_started;
 	bool m_enabled;
+	// make sure to have component lists when you inevitably make components
 
 	// other component functions to do later
 	/*

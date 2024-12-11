@@ -10,7 +10,7 @@ Actor::~Actor()
 {
 }
 
-Actor Actor::Instantiate(Actor& actor, Transform2D* parent, Vec2 position, float rotation)
+Actor Actor::Instantiate(Actor& actor, Transform2D* parent, const Vec2 position, const float rotation)
 {
 	actor.m_transform->SetLocalPosition(position);
 	actor.m_transform->SetLocalRotation(Mat3::createRotation(rotation));

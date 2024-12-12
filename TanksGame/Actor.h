@@ -9,10 +9,10 @@ class Component;
 class Actor 
 {
 public:
-	Actor();
+	Actor(Transform2D transform);
 public:
 	~Actor();
-	static Actor Instantiate(Actor& actor, Transform2D *transform, const Vec2 position, const float rotation);
+	static Actor Instantiate(Actor& actor, Transform2D* transform, const Vec2 position, const float rotation);
 	void Destroy(Actor* actor);
 	void Start();
 	void Update();
@@ -28,7 +28,7 @@ public:
 	*/
 
 private:
-	Transform2D *m_transform;
+	Transform2D& m_transform;
 	bool m_started;
 	bool m_enabled;
 

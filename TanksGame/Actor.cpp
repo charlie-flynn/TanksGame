@@ -1,23 +1,23 @@
 #include "Actor.h"
 #include "Transform2D.h"
 
-Actor::Actor() 
-	: m_transform(new Transform2D(*this)), m_enabled(false), m_started(false)
+Actor::Actor(Transform2D transform) 
+	: m_transform(transform), m_enabled(false), m_started(false)
 {
-	*m_transform = Transform2D(*this);
+
 }
 
 Actor::~Actor()
 {
-	delete m_transform;
+
 }
 
 Actor Actor::Instantiate(Actor& actor, Transform2D* parent, const Vec2 position, const float rotation)
 {
-	actor.m_transform->SetLocalPosition(position);
-	actor.m_transform->SetLocalRotation(Mat3::createRotation(rotation));
+	actor.m_transform.SetLocalPosition(position);
+	actor.m_transform.SetLocalRotation(Mat3::createRotation(rotation));
 	if (parent != nullptr)
-		parent->AddChild(actor.m_transform);
+		parent->AddChild(&actor.m_transform);
 
 	// add actor to current scene
 

@@ -6,10 +6,9 @@ int main(void)
 {
     InitWindow(800, 450, "raylib [core] example - basic window");
 
-    TestActor testGuy = TestActor();
-    Transform2D testTransform = Transform2D(testGuy);
+    TestActor testGuy = TestActor(*Transform2D(testGuy));
 
-    Actor::Instantiate(testGuy, &testTransform, MathLibrary::Vector2(39, 39), 0);
+    Actor::Instantiate(testGuy, testGuy, MathLibrary::Vector2(39, 39), 0);
 
     while (!WindowShouldClose())
     {

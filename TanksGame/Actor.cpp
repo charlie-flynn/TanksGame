@@ -4,10 +4,12 @@
 Actor::Actor() 
 	: m_transform(new Transform2D(*this)), m_enabled(false), m_started(false)
 {
+	*m_transform = Transform2D(*this);
 }
 
 Actor::~Actor()
 {
+	delete m_transform;
 }
 
 Actor Actor::Instantiate(Actor& actor, Transform2D* parent, const Vec2 position, const float rotation)
@@ -56,4 +58,19 @@ void Actor::End()
 
 void Actor::OnCollision(Actor* other)
 {
+}
+
+void Actor::SetEnabled(const bool value)
+{
+	// if enabled is already equal to the value, dont do anything
+	if (m_enabled = value)
+		return;
+
+	// set enabled equal to the value, then call the OnEnable or OnDisable based on the value
+	m_enabled = value;
+
+	if (value)
+		OnEnable();
+	else
+		OnDisable();
 }

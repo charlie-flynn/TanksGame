@@ -141,10 +141,12 @@
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="TestActor.cpp" />
     <ClCompile Include="Transform2D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.h" />
+    <ClInclude Include="TestActor.h" />
     <ClInclude Include="Transform2D.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

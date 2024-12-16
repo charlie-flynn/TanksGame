@@ -19,6 +19,7 @@ public:
 	void End();
 	void OnCollision(Actor* other);
 	void SetEnabled(const bool value);
+	Transform2D* GetTransform();
 	// commenting out the component functions to do later
 	/*
 	AddComponent

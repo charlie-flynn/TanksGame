@@ -9,7 +9,7 @@ Actor::Actor(Transform2D transform)
 
 Actor::~Actor()
 {
-
+	
 }
 
 Actor Actor::Instantiate(Actor& actor, Transform2D* parent, const Vec2 position, const float rotation)
@@ -73,4 +73,9 @@ void Actor::SetEnabled(const bool value)
 		OnEnable();
 	else
 		OnDisable();
+}
+
+Transform2D* Actor::GetTransform()
+{
+	return &m_transform;
 }

@@ -6,6 +6,7 @@ class TestActor : public Actor
 {
 
 public:
+	TestActor();
 	void Destroy(Actor* actor);
 	void Start();
 	void Update();

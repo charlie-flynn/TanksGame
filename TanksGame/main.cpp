@@ -6,7 +6,7 @@
 int main(void)
 {
     InitWindow(800, 450, "raylib [core] example - basic window");
-    // test
+
     TestActor testGuy = TestActor();
     TwostActor testBlue = TwostActor();
     TwostActor testTwue = TwostActor();

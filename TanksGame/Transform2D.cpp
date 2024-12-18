@@ -1,16 +1,18 @@
 #include "Transform2D.h"
 #include "Actor.h"
 #include <cmath>
+#include <iostream>
 
 Transform2D::Transform2D(Actor& owner) 
-	: m_owner(owner), m_localMatrix(new Mat3), m_globalMatrix(new Mat3), m_localTranslation(new Mat3), m_localRotation(new Mat3), m_localScale(new Mat3),
-	  m_localRotationAngle(0), m_parent(nullptr)
+	: m_owner(owner)
 {
-	*m_localMatrix = Mat3();
-	*m_globalMatrix = Mat3();
-	*m_localTranslation = Mat3();
-	*m_localRotation = Mat3();
-	*m_localScale = Mat3();
+	m_parent = nullptr;
+	m_localRotationAngle = 0;
+	m_localMatrix = new Mat3(1, 0, 0, 0, 1, 0, 0, 0, 1);
+	m_globalMatrix = new Mat3(1, 0, 0, 0, 1, 0, 0, 0, 1);
+	m_localTranslation = new Mat3(1, 0, 0, 0, 1, 0, 0, 0, 1);
+	m_localRotation = new Mat3(1, 0, 0, 0, 1, 0, 0, 0, 1);
+	m_localScale = new Mat3(1, 0, 0, 0, 1, 0, 0, 0, 1);
 }
 
 Transform2D::~Transform2D()
@@ -20,7 +22,8 @@ Transform2D::~Transform2D()
 	delete m_localTranslation;
 	delete m_localRotation;
 	delete m_localScale;
-	delete m_parent;
+	if (m_parent)
+		delete m_parent;
 }
 
 float Transform2D::GetGlobalRotationAngle()
@@ -28,7 +31,7 @@ float Transform2D::GetGlobalRotationAngle()
 	return (float)atan2(m_globalMatrix->m01, m_globalMatrix->m00);
 }
 
-void Transform2D::SetLocalRotation(const Mat3 rotation)
+void Transform2D::SetLocalRotation(const Mat3& rotation)
 {
 	*m_localRotation = rotation;
 	m_localRotationAngle = -(float)atan2(m_localRotation->m01, m_localRotation->m00);

@@ -9,7 +9,7 @@ class Component;
 class Actor 
 {
 public:
-	Actor(Transform2D transform);
+	Actor();
 public:
 	~Actor();
 	static Actor Instantiate(Actor& actor, Transform2D* transform, const Vec2 position, const float rotation);
@@ -29,12 +29,13 @@ public:
 	*/
 
 private:
-	Transform2D& m_transform;
+	Transform2D* m_transform;
 	bool m_started;
 	bool m_enabled;
 
 	void OnEnable();
 	void OnDisable();
+	Transform2D GetTransformDereferenced();
 	// make sure to have component lists when you inevitably make components
 
 	// other component functions to do later

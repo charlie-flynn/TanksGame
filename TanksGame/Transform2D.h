@@ -19,7 +19,7 @@ public:
 	float GetLocalRotationAngle() { return m_localRotationAngle; }
 	float GetGlobalRotationAngle();
 
-	void SetLocalRotation(Mat3 rotation);
+	void SetLocalRotation(const Mat3& rotation);
 	void SetLocalPosition(Vec2 position);
 	void SetLocalScale(Vec2 scale);
 

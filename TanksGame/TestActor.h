@@ -22,7 +22,6 @@ public:
 	*/
 
 private:
-	Transform2D* m_transform;
 	bool m_started;
 	bool m_enabled;
 

@@ -6,7 +6,7 @@ int main(void)
 {
     InitWindow(800, 450, "raylib [core] example - basic window");
 
-    TestActor testGuy = TestActor(new Transform2D(testGuy));
+    TestActor testGuy = TestActor();
 
     Actor::Instantiate(testGuy, testGuy.GetTransform(), MathLibrary::Vector2(39, 39), 0);
 

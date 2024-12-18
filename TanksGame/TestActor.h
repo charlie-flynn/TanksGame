@@ -22,8 +22,6 @@ public:
 	*/
 
 private:
-	bool m_started;
-	bool m_enabled;
 
 	void OnEnable();
 	void OnDisable();

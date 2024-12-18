@@ -4,7 +4,7 @@
 Actor::Actor() 
 	: m_transform(new Transform2D(*this)), m_enabled(false), m_started(false)
 {
-
+	Start();
 }
 
 Actor::~Actor()
@@ -29,8 +29,13 @@ void Actor::Destroy(Actor* actor)
 {
 
 	// remove children
+	for (int i = 0; i < m_transform->GetChildren().Length(); i++)
+	{
+		m_transform->RemoveChild(m_transform->GetChildren()[i]);
+	}
 
 	// unchild from parent
+	m_transform->GetParent()->RemoveChild(this->GetTransform());
 
 	// remove from current scene
 }

@@ -29,6 +29,8 @@ public:
 	void Translate(Vec2 direction);
 	void Rotate(float radians);
 
+	DynamicArray<Transform2D*> GetChildren() { return m_children; };
+	Transform2D* GetParent() { return m_parent; };
 	void AddChild(Transform2D* child);
 	bool RemoveChild(Transform2D* child);
 

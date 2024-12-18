@@ -9,11 +9,11 @@ int main(void)
 
     TestActor testGuy = TestActor();
     TwostActor testBlue = TwostActor();
+    TwostActor testTwue = TwostActor();
 
     Actor::Instantiate(testGuy, nullptr, MathLibrary::Vector2(39, 39), 0);
-    Actor::Instantiate(testBlue, nullptr, MathLibrary::Vector2(49, 49), 0);
-
-    testGuy.GetTransform()->AddChild(testBlue.GetTransform());
+    Actor::Instantiate(testBlue, testGuy.GetTransform(), MathLibrary::Vector2(49, 49), 0);
+    Actor::Instantiate(testTwue, testGuy.GetTransform(), MathLibrary::Vector2(100, 100), 0);
 
     while (!WindowShouldClose())
     {
@@ -23,6 +23,7 @@ int main(void)
         EndDrawing();
         testGuy.Update();
         testBlue.Update();
+        testTwue.Update();
     }
     
     CloseWindow();

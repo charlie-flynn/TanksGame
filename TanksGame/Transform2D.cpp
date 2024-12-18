@@ -1,7 +1,6 @@
 #include "Transform2D.h"
 #include "Actor.h"
 #include <cmath>
-#include <iostream>
 
 Transform2D::Transform2D(Actor& owner) 
 	: m_owner(owner)
@@ -22,7 +21,7 @@ Transform2D::~Transform2D()
 	delete m_localTranslation;
 	delete m_localRotation;
 	delete m_localScale;
-	if (m_parent)
+	if (m_parent != nullptr)
 		delete m_parent;
 }
 
@@ -82,14 +81,14 @@ void Transform2D::AddChild(Transform2D* child)
 
 bool Transform2D::RemoveChild(Transform2D* child)
 {
-	int oldSize = m_children.Length();
+	int oldLength = m_children.Length();
 
 	if (m_children.Length() == 0)
 		return false;
 
 	m_children.Remove(child);
 
-	if (m_children.Length() == oldSize)
+	if (m_children.Length() == oldLength)
 	{
 
 		return false;

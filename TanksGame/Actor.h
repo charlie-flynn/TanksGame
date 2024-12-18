@@ -37,7 +37,6 @@ private:
 
 	void virtual OnEnable();
 	void virtual OnDisable();
-	Transform2D GetTransformDereferenced();
 	// make sure to have component lists when you inevitably make components
 
 	// other component functions to do later

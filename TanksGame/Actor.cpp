@@ -48,11 +48,6 @@ void Actor::OnDisable()
 {
 }
 
-Transform2D Actor::GetTransformDereferenced()
-{
-	return *m_transform;
-}
-
 void Actor::Start()
 {
 	m_started = true;

@@ -26,6 +26,13 @@ Transform2D::~Transform2D()
 		delete m_parent;
 }
 
+Vec2 Transform2D::GetGlobalScale()
+{
+	Vec2 xAxis = Vec2(m_globalMatrix->m00, m_globalMatrix->m10);
+	Vec2 yAxis = Vec2(m_globalMatrix->m01, m_globalMatrix->m11);
+	return Vec2(xAxis.getMagnitude(), yAxis.getMagnitude());
+}
+
 float Transform2D::GetGlobalRotationAngle()
 {
 	return (float)atan2(m_globalMatrix->m01, m_globalMatrix->m00);
@@ -35,18 +42,21 @@ void Transform2D::SetLocalRotation(const Mat3& rotation)
 {
 	*m_localRotation = rotation;
 	m_localRotationAngle = -(float)atan2(m_localRotation->m01, m_localRotation->m00);
+	UpdateTransforms();
 }
 
 void Transform2D::SetLocalPosition(const Vec2 position)
 {
 	m_localTranslation->m02 = position.x;
 	m_localTranslation->m12 = position.y;
+	UpdateTransforms();
 }
 
 void Transform2D::SetLocalScale(const Vec2 scale)
 {
 	m_localTranslation->m00 = scale.x;
 	m_localTranslation->m11 = scale.y;
+	UpdateTransforms();
 }
 
 void Transform2D::Translate(const Vec2 direction)
@@ -61,10 +71,35 @@ void Transform2D::Rotate(const float radians)
 
 void Transform2D::AddChild(Transform2D* child)
 {
+	if (child == m_parent || child == this)
+		return;
+
+	m_children.Add(child);
+
+	child->m_parent = this;
+	child->UpdateTransforms();
 }
 
-void Transform2D::RemoveChild(Transform2D* child)
+bool Transform2D::RemoveChild(Transform2D* child)
 {
+	int oldSize = m_children.Length();
+
+	if (m_children.Length() == 0)
+		return false;
+
+	m_children.Remove(child);
+
+	if (m_children.Length() == oldSize)
+	{
+
+		return false;
+	}
+	else
+	{
+		child->m_parent = nullptr;
+		return true;
+	}
+
 }
 
 void Transform2D::UpdateTransforms()
@@ -76,5 +111,10 @@ void Transform2D::UpdateTransforms()
 	else
 		*m_globalMatrix = *m_localMatrix;
 
-	// update children down here (when they are real)
+	// update children
+	for (int i = 0; i < m_children.Length(); i++)
+	{
+		m_children[i]->UpdateTransforms();
+	}
+
 }

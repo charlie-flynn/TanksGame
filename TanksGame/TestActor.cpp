@@ -25,8 +25,8 @@ void TestActor::Update()
 	if (IsKeyDown(KEY_UP) || IsKeyDown(KEY_DOWN))
 		GetTransform()->Translate(Vec2(0, IsKeyDown(KEY_DOWN) - IsKeyDown(KEY_UP)));
 
-	DrawRectangleV(Vector2() = { GetTransform()->GetLocalPosition().x, GetTransform()->GetLocalPosition().y},
-		Vector2() = { GetTransform()->GetLocalScale().x * 50, GetTransform()->GetLocalScale().y * 50 }, RED);
+	DrawRectangleV(Vector2() = { GetTransform()->GetGlobalPosition().x, GetTransform()->GetGlobalPosition().y},
+		Vector2() = { GetTransform()->GetGlobalScale().x * 50, GetTransform()->GetGlobalScale().y * 50 }, RED);
 }
 
 void TestActor::End()
@@ -34,10 +34,6 @@ void TestActor::End()
 }
 
 void TestActor::OnCollision(Actor* other)
-{
-}
-
-void TestActor::SetEnabled(const bool value)
 {
 }
 

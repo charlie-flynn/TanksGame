@@ -8,11 +8,10 @@ class TestActor : public Actor
 public:
 	TestActor();
 	void Destroy(Actor* actor);
-	void Start();
-	void Update();
-	void End();
-	void OnCollision(Actor* other);
-	void SetEnabled(const bool value);
+	void Start() override;
+	void Update() override;
+	void End() override;
+	void OnCollision(Actor* other) override;
 	// commenting out the component functions to do later
 	/*
 	AddComponent
@@ -23,8 +22,8 @@ public:
 
 private:
 
-	void OnEnable();
-	void OnDisable();
+	void OnEnable() override;
+	void OnDisable() override;
 	// make sure to have component lists when you inevitably make components
 
 	// other component functions to do later

@@ -1,6 +1,7 @@
 #pragma once
 #include "Matrix3.h"
 #include "Vector2.h"
+#include "DynamicArray.h"
 
 typedef MathLibrary::Matrix3 Mat3;
 typedef MathLibrary::Vector2 Vec2;
@@ -15,7 +16,9 @@ public:
 
 	Mat3 GetLocalRotation() { return *m_localRotation; }
 	Vec2 GetLocalPosition() { return Vec2(m_localTranslation->m02, m_localTranslation->m12); }
+	Vec2 GetGlobalPosition() { return Vec2(m_globalMatrix->m02, m_globalMatrix->m12); }
 	Vec2 GetLocalScale() { return Vec2(m_localScale->m00, m_localScale->m11); }
+	Vec2 GetGlobalScale();
 	float GetLocalRotationAngle() { return m_localRotationAngle; }
 	float GetGlobalRotationAngle();
 
@@ -27,7 +30,7 @@ public:
 	void Rotate(float radians);
 
 	void AddChild(Transform2D* child);
-	void RemoveChild(Transform2D* child);
+	bool RemoveChild(Transform2D* child);
 
 	void UpdateTransforms();
 private:
@@ -39,9 +42,9 @@ private:
 	Mat3* m_localScale;
 	float m_localRotationAngle;
 
-	// if we have to destroy these it will be morally okay
-	// it'd really suck tho
+
 	Transform2D* m_parent;
-	// INSERT CHILDREN HERE (i dunno how to make a group of transform2d pointers yet)
+	DynamicArray<Transform2D*> m_children;
+
 	Actor& m_owner;
 };

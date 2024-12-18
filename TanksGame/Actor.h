@@ -14,10 +14,10 @@ public:
 	~Actor();
 	static Actor Instantiate(Actor& actor, Transform2D* transform, const Vec2 position, const float rotation);
 	void Destroy(Actor* actor);
-	void Start();
-	void Update();
-	void End();
-	void OnCollision(Actor* other);
+	void virtual Start();
+	void virtual Update();
+	void virtual End();
+	void virtual OnCollision(Actor* other);
 	bool GetStarted() { return m_started; };
 	bool GetEnabled() { return m_enabled; };
 	void SetEnabled(const bool value);
@@ -35,8 +35,8 @@ private:
 	bool m_started;
 	bool m_enabled;
 
-	void OnEnable();
-	void OnDisable();
+	void virtual OnEnable();
+	void virtual OnDisable();
 	Transform2D GetTransformDereferenced();
 	// make sure to have component lists when you inevitably make components
 

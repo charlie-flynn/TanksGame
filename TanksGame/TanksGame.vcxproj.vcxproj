@@ -139,18 +139,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="engine\Actor.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="TestActor.cpp" />
-    <ClCompile Include="Transform2D.cpp" />
-    <ClCompile Include="TwostActor.cpp" />
+    <ClCompile Include="engine\TestActor.cpp" />
+    <ClCompile Include="engine\Transform2D.cpp" />
+    <ClCompile Include="engine\TwostActor.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Actor.h" />
-    <ClInclude Include="DynamicArray.h" />
-    <ClInclude Include="TestActor.h" />
-    <ClInclude Include="Transform2D.h" />
-    <ClInclude Include="TwostActor.h" />
+    <ClInclude Include="engine\Actor.h" />
+    <ClInclude Include="engine\DynamicArray.h" />
+    <ClInclude Include="engine\TestActor.h" />
+    <ClInclude Include="engine\Transform2D.h" />
+    <ClInclude Include="engine\TwostActor.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

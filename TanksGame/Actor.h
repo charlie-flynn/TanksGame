@@ -18,6 +18,8 @@ public:
 	void Update();
 	void End();
 	void OnCollision(Actor* other);
+	bool GetStarted() { return m_started; };
+	bool GetEnabled() { return m_enabled; };
 	void SetEnabled(const bool value);
 	Transform2D* GetTransform();
 	// commenting out the component functions to do later

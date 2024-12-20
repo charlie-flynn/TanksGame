@@ -18,7 +18,7 @@ void TestActor::Start()
 {
 }
 
-void TestActor::Update()
+void TestActor::Update(double deltaTime)
 {
 	if (IsKeyDown(KEY_RIGHT) || IsKeyDown(KEY_LEFT)	)
 		GetTransform()->Translate(Vec2(IsKeyDown(KEY_RIGHT) - IsKeyDown(KEY_LEFT), 0));

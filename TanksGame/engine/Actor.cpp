@@ -53,7 +53,7 @@ void Actor::Start()
 	m_started = true;
 }
 
-void Actor::Update()
+void Actor::Update(double deltaTime)
 {
 }
 

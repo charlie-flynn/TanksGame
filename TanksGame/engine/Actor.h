@@ -15,7 +15,7 @@ public:
 	static Actor Instantiate(Actor& actor, Transform2D* transform, const Vec2 position, const float rotation);
 	void Destroy(Actor* actor);
 	void virtual Start();
-	void virtual Update();
+	void virtual Update(double deltaTime);
 	void virtual End();
 	void virtual OnCollision(Actor* other);
 	bool GetStarted() { return m_started; };

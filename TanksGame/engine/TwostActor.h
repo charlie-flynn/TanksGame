@@ -5,5 +5,5 @@ class TwostActor : public Actor
 {
 public: 
 	TwostActor() = default;
-	void Update() override;
+	void Update(double deltaTime) override;
 };

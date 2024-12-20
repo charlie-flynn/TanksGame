@@ -9,7 +9,7 @@ public:
 	TestActor();
 	void Destroy(Actor* actor);
 	void Start() override;
-	void Update() override;
+	void Update(double deltaTime) override;
 	void End() override;
 	void OnCollision(Actor* other) override;
 	// commenting out the component functions to do later

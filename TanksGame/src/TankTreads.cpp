@@ -14,11 +14,31 @@ void TankTreads::Update(double deltaTime)
 	rec.x = GetTransform()->GetGlobalPosition().x;
 	rec.y = GetTransform()->GetGlobalPosition().y;
 
-	if (IsKeyDown(KEY_E))
-		GetTransform()->Rotate(.2f);
+	RotateToDirection(Vec2(IsKeyDown(KEY_RIGHT) - IsKeyDown(KEY_LEFT),
+		IsKeyDown(KEY_DOWN) - IsKeyDown(KEY_UP)).getNormalized());
 
+	std::cout << IsKeyDown(KEY_RIGHT) - IsKeyDown(KEY_LEFT) << ", " << IsKeyDown(KEY_DOWN) - IsKeyDown(KEY_UP) << "\n";
 	// draw the treads
-	DrawRectanglePro(rec, { rec.width / 2, rec.height / 2}, GetTransform()->GetGlobalRotationAngle() * (180 / PI), GRAY);
+	DrawRectanglePro(rec, { rec.width / 2, rec.height / 2}, GetTransform()->GetGlobalRotationAngle() * (180 / PI) + 90, GRAY);
+}
 
-	std::cout << GetTransform()->GetGlobalRotationAngle() << "\n";
+void TankTreads::RotateToDirection(Vec2 direction)
+{
+	if ((direction == Vec2(0, 0)))
+		return;
+
+	Vec2 forward = GetTransform()->GetForwardVector();
+
+	// do weird math to check if its pointing the right way
+
+	// if it is, return
+	// if it isn't, rotate towards that way
+
+	if (!(forward == direction))
+	{
+		if ((forward.x >= direction.x && forward.y >= direction.y) || (forward.x >= -direction.x && forward.y >= -direction.y))
+			GetTransform()->Rotate(.001);
+		else
+			GetTransform()->Rotate(-.001);
+	}
 }

@@ -21,6 +21,7 @@ public:
 	Vec2 GetGlobalScale();
 	float GetLocalRotationAngle() { return m_localRotationAngle; }
 	float GetGlobalRotationAngle();
+	Vec2 GetForwardVector() { return Vec2(m_globalMatrix->m00, m_globalMatrix->m10); };
 
 	void SetLocalRotation(const Mat3& rotation);
 	void SetLocalPosition(Vec2 position);

@@ -15,10 +15,10 @@ void TankTreads::Update(double deltaTime)
 	rec.y = GetTransform()->GetGlobalPosition().y;
 
 	if (IsKeyDown(KEY_E))
-		GetTransform()->Rotate(.1f);
+		GetTransform()->Rotate(.2f);
 
 	// draw the treads
-	DrawRectanglePro(rec, { 0, 0 }, 4.51234, GRAY);
+	DrawRectanglePro(rec, { rec.width / 2, rec.height / 2}, GetTransform()->GetGlobalRotationAngle() * (180 / PI), GRAY);
 
-	std::cout << rec.x << ", " << rec.y << "\n";
+	std::cout << GetTransform()->GetGlobalRotationAngle() << "\n";
 }

@@ -40,7 +40,7 @@ float Transform2D::GetGlobalRotationAngle()
 void Transform2D::SetLocalRotation(const Mat3& rotation)
 {
 	*m_localRotation = rotation;
-	m_localRotationAngle = -(float)atan2(m_localRotation->m01, m_localRotation->m00);
+	m_localRotationAngle = (float)atan2(m_localRotation->m01, m_localRotation->m00);
 	UpdateTransforms();
 }
 
@@ -65,7 +65,7 @@ void Transform2D::Translate(const Vec2 direction)
 
 void Transform2D::Rotate(const float radians)
 {
-	SetLocalRotation(GetLocalRotation() + Mat3::createRotation(radians));
+	SetLocalRotation(Mat3::createRotation(m_localRotationAngle + radians));
 }
 
 void Transform2D::AddChild(Transform2D* child)

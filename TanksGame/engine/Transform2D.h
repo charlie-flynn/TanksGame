@@ -14,7 +14,7 @@ public:
 	Transform2D(Actor& owner);
 	~Transform2D();
 
-	Mat3 GetLocalRotation() { return *m_localRotation; }
+	Mat3* GetLocalRotation() { return m_localRotation; }
 	Vec2 GetLocalPosition() { return Vec2(m_localTranslation->m02, m_localTranslation->m12); }
 	Vec2 GetGlobalPosition() { return Vec2(m_globalMatrix->m02, m_globalMatrix->m12); }
 	Vec2 GetLocalScale() { return Vec2(m_localScale->m00, m_localScale->m11); }

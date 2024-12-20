@@ -14,13 +14,14 @@ Actor::~Actor()
 
 Actor* Actor::Instantiate(Actor* actor, Transform2D* parent, const Vec2 position, const float rotation)
 {
+	// set the actor's position, rotation, and parent
 	actor->m_transform->SetLocalPosition(position);
 	actor->m_transform->SetLocalRotation(Mat3::createRotation(rotation));
 	if (parent != nullptr)
 		parent->AddChild(actor->m_transform);
 
 	// add actor to current scene
-
+	
 	// return actor
 	return actor;
 }

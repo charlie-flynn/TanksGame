@@ -9,15 +9,15 @@ Actor::Actor()
 
 Actor::~Actor()
 {
-	
+	delete m_transform;
 }
 
-Actor Actor::Instantiate(Actor& actor, Transform2D* parent, const Vec2 position, const float rotation)
+Actor* Actor::Instantiate(Actor* actor, Transform2D* parent, const Vec2 position, const float rotation)
 {
-	actor.m_transform->SetLocalPosition(position);
-	actor.m_transform->SetLocalRotation(Mat3::createRotation(rotation));
+	actor->m_transform->SetLocalPosition(position);
+	actor->m_transform->SetLocalRotation(Mat3::createRotation(rotation));
 	if (parent != nullptr)
-		parent->AddChild(actor.m_transform);
+		parent->AddChild(actor->m_transform);
 
 	// add actor to current scene
 
@@ -40,29 +40,9 @@ void Actor::Destroy(Actor* actor)
 	// remove from current scene
 }
 
-void Actor::OnEnable()
-{
-}
-
-void Actor::OnDisable()
-{
-}
-
 void Actor::Start()
 {
 	m_started = true;
-}
-
-void Actor::Update(double deltaTime)
-{
-}
-
-void Actor::End()
-{
-}
-
-void Actor::OnCollision(Actor* other)
-{
 }
 
 void Actor::SetEnabled(const bool value)

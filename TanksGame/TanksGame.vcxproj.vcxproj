@@ -145,6 +145,7 @@
     <ClCompile Include="engine\Transform2D.cpp" />
     <ClCompile Include="engine\TwostActor.cpp" />
     <ClCompile Include="src\TankBottom.cpp" />
+    <ClCompile Include="src\TankTreads.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine\Actor.h" />
@@ -153,6 +154,7 @@
     <ClInclude Include="engine\Transform2D.h" />
     <ClInclude Include="engine\TwostActor.h" />
     <ClInclude Include="src\TankBottom.h" />
+    <ClInclude Include="src\TankTreads.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

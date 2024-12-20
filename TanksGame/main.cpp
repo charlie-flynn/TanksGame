@@ -3,28 +3,28 @@
 #include "engine/TestActor.h"
 #include "engine/TwostActor.h"
 #include "src/TankBottom.h"
+#include "src/TankTreads.h"
 
 int main(void)
 {
     InitWindow(800, 450, "raylib [core] example - basic window");
 
     TankBottom tankBottom = TankBottom();
-    TwostActor testBlue = TwostActor();
-    TwostActor testTwue = TwostActor();
+    TankTreads tankTreads = TankTreads();
 
     Actor::Instantiate(&tankBottom, nullptr, MathLibrary::Vector2(39, 39), 0);
-    Actor::Instantiate(&testBlue, tankBottom.GetTransform(), MathLibrary::Vector2(49, 49), 0);
-    Actor::Instantiate(&testTwue, tankBottom.GetTransform(), MathLibrary::Vector2(100, 100), 0);
+    Actor::Instantiate(&tankTreads, tankBottom.GetTransform(), MathLibrary::Vector2(-4, -4), 0);
 
     while (!WindowShouldClose())
     {
         BeginDrawing();
         ClearBackground(RAYWHITE);
         DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
-        EndDrawing();
+
+        tankTreads.Update(0.0024);
         tankBottom.Update(0.0024);
-        testBlue.Update(1);
-        testTwue.Update(1);
+
+        EndDrawing();
     }
     
     CloseWindow();

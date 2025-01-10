@@ -26,15 +26,22 @@ void TankTreads::RotateToDirection(Vec2 direction)
 	if (direction == Vec2(0, 0))
 		return;
 
+	bool directionNotCardinal = false;
 	Vec2 forward = GetTransform()->GetForwardVector();
 	float angle = Vec2::findAngle(forward, direction);
 
-	// do weird math to check if its pointing the right way
+	// check if the direction is cardinal
+	if ((direction.x != 1 && direction.x != -1) && (direction.y != 1 && direction.y != -1))
+		directionNotCardinal = true;
 
-	// if it is, do nothing
-	// if it isn't, rotate towards that way
+	if (directionNotCardinal)
+	{
+		angle += 1.5f;
+	}
 
-	if (angle > -3 && angle < 3)
+	std::cout << angle << std::endl;
+	// if the angle is kinda around 3, do nothing. otherwise, rotate
+	if (angle > -2.98f && angle < 2.98f && angle != 0)
 	{
 		if (angle < 0)
 			GetTransform()->Rotate(.0025f);

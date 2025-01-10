@@ -41,9 +41,9 @@ void TankTreads::RotateToDirection(Vec2 direction)
 
 	std::cout << angle << std::endl;
 	// if the angle is kinda around 3, do nothing. otherwise, rotate
-	if (angle > -2.98f && angle < 2.98f && angle != 0)
+	if (angle > -3.0f && angle < 3.0f && angle != 0)
 	{
-		if (angle < 0)
+		if (angle < 0 || angle > 1.68f)
 			GetTransform()->Rotate(.0025f);
 		else
 			GetTransform()->Rotate(-.0025f);

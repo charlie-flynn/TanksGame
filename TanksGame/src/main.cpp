@@ -1,7 +1,7 @@
 #include "raylib.h"
-#include "Transform2D.h"
-#include "TestActor.h"
-#include "TwostActor.h"
+#include "Engine/Transform2D.h"
+#include "Game/TestActor.h"
+#include "Game/TwostActor.h"
 
 int main(void)
 {

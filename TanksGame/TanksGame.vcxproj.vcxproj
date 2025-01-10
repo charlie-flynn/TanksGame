@@ -76,7 +76,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)vendor\Raylib5.5\include;$(SolutionDir)vendor\MathLibrary\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;$(SolutionDir)vendor\Raylib5.5\include;$(SolutionDir)vendor\MathLibrary\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -93,7 +93,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)vendor\Raylib5.5\include;$(SolutionDir)vendor\MathLibrary\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;$(SolutionDir)vendor\Raylib5.5\include;$(SolutionDir)vendor\MathLibrary\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -110,7 +110,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)vendor\Raylib5.5\include;$(SolutionDir)vendor\MathLibrary\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;$(SolutionDir)vendor\Raylib5.5\include;$(SolutionDir)vendor\MathLibrary\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -127,7 +127,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)vendor\Raylib5.5\include;$(SolutionDir)vendor\MathLibrary\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;$(SolutionDir)vendor\Raylib5.5\include;$(SolutionDir)vendor\MathLibrary\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -139,18 +139,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Actor.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="TestActor.cpp" />
-    <ClCompile Include="Transform2D.cpp" />
-    <ClCompile Include="TwostActor.cpp" />
+    <ClCompile Include="src\Engine\Actor.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Game\TestActor.cpp" />
+    <ClCompile Include="src\Engine\Transform2D.cpp" />
+    <ClCompile Include="src\Game\TwostActor.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Actor.h" />
-    <ClInclude Include="DynamicArray.h" />
-    <ClInclude Include="TestActor.h" />
-    <ClInclude Include="Transform2D.h" />
-    <ClInclude Include="TwostActor.h" />
+    <ClInclude Include="src\Engine\Actor.h" />
+    <ClInclude Include="src\Engine\DynamicArray.h" />
+    <ClInclude Include="src\Game\TestActor.h" />
+    <ClInclude Include="src\Engine\Transform2D.h" />
+    <ClInclude Include="src\Game\TwostActor.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

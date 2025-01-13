@@ -94,9 +94,10 @@ inline void Actor::RemoveComponent()
 template<typename T>
 inline T* Actor::GetComponent()
 {
+	// if this code doesnt work tell me because i dunno if it works
 	for (int i = 0; i < m_components.Length(); i++)
 	{
-		if (typeid(m_components[i]) = typeid(T))
+		if (typeid(m_components[i]) == typeid(T))
 			return m_components[i];
 	}
 	return nullptr;
@@ -105,7 +106,17 @@ inline T* Actor::GetComponent()
 template<typename T>
 inline T* Actor::GetComponents()
 {
+	int length = 0;
+	T* components = T[];
 
+	for (int i = 0; i < m_components.Length(); i++)
+	{
+		if (typeid(m_components[i] == typeid(T)))
+		{
+			components[length] = m_components[i];
+			length++;
+		}
+	}
 
-	return nullptr;
+	return components;
 }

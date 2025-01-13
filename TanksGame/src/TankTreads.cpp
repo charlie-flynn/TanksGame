@@ -26,11 +26,11 @@ void TankTreads::RotateToDirection(Vec2 direction)
 	if (direction == Vec2(0, 0))
 		return;
 
-	// if the direction isnt a cardinal direction, invert the x so it looks right
+	// if the direction isnt a cardinal direction, invert the x so it looks right with the tank treads
 	if (direction.x != 0 && direction.y != 0)
 	{
 		direction.x *= -1;
-		// if it is very specifically this direction, pretend its the opposite of that
+		// if the direction is very specifically this direction, pretend its the opposite of that
 		if (abs(direction.x - -0.707107f) < 0.01f && abs(direction.y - 0.707107f) < 0.01f)
 			direction = Vec2(0.707107f, -0.707107f);
 	}
@@ -38,13 +38,11 @@ void TankTreads::RotateToDirection(Vec2 direction)
 	Vec2 forward = GetTransform()->GetForwardVector();
 	Vec2 absoluteDirection = Vec2(abs(direction.x), abs(direction.y));
 
-	float fowardDirectionAngle = Vec2::findAngle(forward, direction);
-	float forwardAbsDirectionAngle = Vec2::findAngle(forward, absoluteDirection);
-
+	// if the opposite of the direction is equal to the absolute value of the direction, use the angle from the absolute value of the direction
+	// otherwise, use the direction itself
 	if (Vec2(direction.x * -1, direction.y * -1) == absoluteDirection)
 	{
-		// run the usual checks but with ForwardAbsDirectionAngle
-
+		float forwardAbsDirectionAngle = Vec2::findAngle(forward, absoluteDirection);
 		if (forwardAbsDirectionAngle > 0)
 			GetTransform()->Rotate(0.0050f);
 		else
@@ -52,6 +50,7 @@ void TankTreads::RotateToDirection(Vec2 direction)
 	}
 	else
 	{
+		float fowardDirectionAngle = Vec2::findAngle(forward, direction);
 		if (fowardDirectionAngle > 0)
 			GetTransform()->Rotate(0.0050f);
 		else

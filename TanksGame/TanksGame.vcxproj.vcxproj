@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="engine\Actor.cpp" />
+    <ClCompile Include="engine\Component.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="engine\TestActor.cpp" />
     <ClCompile Include="engine\Transform2D.cpp" />
@@ -149,6 +150,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine\Actor.h" />
+    <ClInclude Include="engine\Component.h" />
     <ClInclude Include="engine\DynamicArray.h" />
     <ClInclude Include="engine\TestActor.h" />
     <ClInclude Include="engine\Transform2D.h" />

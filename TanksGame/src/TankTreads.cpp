@@ -18,7 +18,7 @@ void TankTreads::Update(double deltaTime)
 		IsKeyDown(KEY_DOWN) - IsKeyDown(KEY_UP)).getNormalized());
 
 	// draw the treads
-	DrawRectanglePro(rec, { rec.width / 2, rec.height / 2 }, GetTransform()->GetGlobalRotationAngle() * (180 / PI), GRAY);
+	DrawRectanglePro(rec, { rec.width / 2, rec.height / 2 }, GetTransform()->GetGlobalRotationAngle() * (180 / PI) + 90, GRAY);
 }
 
 void TankTreads::RotateToDirection(Vec2 direction)
@@ -28,22 +28,34 @@ void TankTreads::RotateToDirection(Vec2 direction)
 
 	// if the direction isnt a cardinal direction, invert the x so it looks right
 	if (direction.x != 0 && direction.y != 0)
+	{
 		direction.x *= -1;
+		// if it is very specifically this direction, pretend its the opposite of that
+		if (abs(direction.x - -0.707107f) < 0.01f && abs(direction.y - 0.707107f) < 0.01f)
+			direction = Vec2(0.707107f, -0.707107f);
+	}
 
 	Vec2 forward = GetTransform()->GetForwardVector();
-	Vec2 behind = forward * -1;
-	float angleForward = Vec2::findAngle(forward, direction);
-	float angleBehind = Vec2::findAngle(behind, direction);
+	Vec2 absoluteDirection = Vec2(abs(direction.x), abs(direction.y));
 
-	DrawLine(10, 10, 10.0f * angleForward, 10, BLUE);
-	DrawLine(10, 20, 10.0f * angleBehind, 20, GREEN);
+	float fowardDirectionAngle = Vec2::findAngle(forward, direction);
+	float forwardAbsDirectionAngle = Vec2::findAngle(forward, absoluteDirection);
 
-	if (abs(angleForward) < abs(angleBehind))
+	if (Vec2(direction.x * -1, direction.y * -1) == absoluteDirection)
 	{
-		GetTransform()->Rotate(0.0025f);
-		DrawPoly({ 10, 10 }, 4, 10, 0, RED);
+		// run the usual checks but with ForwardAbsDirectionAngle
+
+		if (forwardAbsDirectionAngle > 0)
+			GetTransform()->Rotate(0.0050f);
+		else
+			GetTransform()->Rotate(-0.0050f);
 	}
 	else
-		GetTransform()->Rotate(-0.0025f);
+	{
+		if (fowardDirectionAngle > 0)
+			GetTransform()->Rotate(0.0050f);
+		else
+			GetTransform()->Rotate(-0.0050f);
+	}
 
 }

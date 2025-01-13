@@ -7,6 +7,10 @@ class Actor;
 class Component
 {
 public:
+	Component(Actor* owner);
+	~Component();
+	Component(Component& other) = default;
+
 	bool GetStarted() { return m_started; };
 	Actor* GetOwner() { return m_owner; };
 	void SetOwner(Actor* owner) { m_owner = owner; };

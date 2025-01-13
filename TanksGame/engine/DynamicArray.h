@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Component.h" // THIS IS SUPER DUPER EXTREMELY TEMPORARY!!! AS SOON AS I CAN THINK OF A SOLUTION THIS GOES GOODBYE
+
 template<typename T>
 class DynamicArray
 {

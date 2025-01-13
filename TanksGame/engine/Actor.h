@@ -35,9 +35,9 @@ public:
 	template <typename T>
 	T* AddComponent();
 	template <typename T>
-	bool RemoveComponent(T component);
+	void RemoveComponent(T component);
 	template <typename T>
-	bool RemoveComponent();
+	void RemoveComponent();
 	template <typename T>
 	T* GetComponent();
 	template <typename T>
@@ -65,35 +65,47 @@ private:
 template<typename T>
 inline T* Actor::AddComponent(T component)
 {
+	m_components.Add(component);
 	return nullptr;
 }
 
 template<typename T>
 inline T* Actor::AddComponent()
 {
-	return nullptr;
+	return AddComponent(new T(this));
 }
 
 template<typename T>
-inline bool Actor::RemoveComponent(T component)
+inline void Actor::RemoveComponent(T component)
 {
-	return false;
+	m_components.Remove(component);
+	return;
 }
 
 template<typename T>
-inline bool Actor::RemoveComponent()
+inline void Actor::RemoveComponent()
 {
-	return false;
+	T component = GetComponent<T>();
+	if (component != nullptr)
+		RemoveComponent(component);
+	return;
 }
 
 template<typename T>
 inline T* Actor::GetComponent()
 {
+	for (int i = 0; i < m_components.Length(); i++)
+	{
+		if (typeid(m_components[i]) = typeid(T))
+			return m_components[i];
+	}
 	return nullptr;
 }
 
 template<typename T>
 inline T* Actor::GetComponents()
 {
+
+
 	return nullptr;
 }

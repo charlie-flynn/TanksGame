@@ -62,7 +62,7 @@ inline DynamicArray<T>::DynamicArray(const DynamicArray<T>& other)
 {
 	m_length = other.m_length;
 	m_array = new T[m_length];
-	for (int i = 0; i < m_length, i++;)
+	for (int i = 0; i < m_length; i++)
 	{
 		m_array[i] = other.m_array[i];
 	}

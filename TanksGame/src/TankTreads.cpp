@@ -18,7 +18,7 @@ void TankTreads::Update(double deltaTime)
 		IsKeyDown(KEY_DOWN) - IsKeyDown(KEY_UP)).getNormalized());
 
 	// draw the treads
-	DrawRectanglePro(rec, { rec.width / 2, rec.height / 2 }, GetTransform()->GetGlobalRotationAngle() * (180 / PI) + 90, GRAY);
+	DrawRectanglePro(rec, { rec.width / 2, rec.height / 2 }, GetTransform()->GetGlobalRotationAngle() * (180 / PI), GRAY);
 }
 
 void TankTreads::RotateToDirection(Vec2 direction)
@@ -26,26 +26,24 @@ void TankTreads::RotateToDirection(Vec2 direction)
 	if (direction == Vec2(0, 0))
 		return;
 
-	bool directionNotCardinal = false;
+	// if the direction isnt a cardinal direction, invert the x so it looks right
+	if (direction.x != 0 && direction.y != 0)
+		direction.x *= -1;
+
 	Vec2 forward = GetTransform()->GetForwardVector();
-	float angle = Vec2::findAngle(forward, direction);
+	Vec2 behind = forward * -1;
+	float angleForward = Vec2::findAngle(forward, direction);
+	float angleBehind = Vec2::findAngle(behind, direction);
 
-	// check if the direction is cardinal
-	if ((direction.x != 1 && direction.x != -1) && (direction.y != 1 && direction.y != -1))
-		directionNotCardinal = true;
+	DrawLine(10, 10, 10.0f * angleForward, 10, BLUE);
+	DrawLine(10, 20, 10.0f * angleBehind, 20, GREEN);
 
-	if (directionNotCardinal)
+	if (abs(angleForward) < abs(angleBehind))
 	{
-		angle += 1.5f;
+		GetTransform()->Rotate(0.0025f);
+		DrawPoly({ 10, 10 }, 4, 10, 0, RED);
 	}
+	else
+		GetTransform()->Rotate(-0.0025f);
 
-	std::cout << angle << std::endl;
-	// if the angle is kinda around 3, do nothing. otherwise, rotate
-	if (angle > -3.0f && angle < 3.0f && angle != 0)
-	{
-		if (angle < 0 || angle > 1.68f)
-			GetTransform()->Rotate(.0025f);
-		else
-			GetTransform()->Rotate(-.0025f);
-	}
 }

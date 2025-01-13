@@ -12,7 +12,7 @@ int main(void)
     TankBottom tankBottom = TankBottom();
     TankTreads tankTreads = TankTreads();
 
-    Actor::Instantiate(&tankBottom, nullptr, MathLibrary::Vector2(39, 39), 0);
+    Actor::Instantiate(&tankBottom, nullptr, Vec2(39, 39), 0);
     Actor::Instantiate(&tankTreads, tankBottom.GetTransform(), MathLibrary::Vector2(25, 25), 0);
 
     while (!WindowShouldClose())

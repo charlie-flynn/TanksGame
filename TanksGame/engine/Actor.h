@@ -1,5 +1,6 @@
 #pragma once
 #include "Vector2.h"
+#include "DynamicArray.h"
 
 typedef MathLibrary::Vector2 Vec2;
 

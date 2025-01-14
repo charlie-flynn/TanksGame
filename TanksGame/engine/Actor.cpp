@@ -46,6 +46,14 @@ void Actor::Start()
 	m_started = true;
 }
 
+void Actor::Update(double deltaTime)
+{
+	for (int i = 0; i < m_components.Length(); i++)
+	{
+		m_components[i].Update(deltaTime);
+	}
+}
+
 void Actor::SetEnabled(const bool value)
 {
 	// if enabled is already equal to the value, dont do anything

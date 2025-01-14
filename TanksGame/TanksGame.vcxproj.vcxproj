@@ -145,6 +145,8 @@
     <ClCompile Include="engine\TestActor.cpp" />
     <ClCompile Include="engine\Transform2D.cpp" />
     <ClCompile Include="engine\TwostActor.cpp" />
+    <ClCompile Include="src\Button.cpp" />
+    <ClCompile Include="src\IsClickable.cpp" />
     <ClCompile Include="src\TankBottom.cpp" />
     <ClCompile Include="src\TankTreads.cpp" />
   </ItemGroup>
@@ -155,6 +157,8 @@
     <ClInclude Include="engine\TestActor.h" />
     <ClInclude Include="engine\Transform2D.h" />
     <ClInclude Include="engine\TwostActor.h" />
+    <ClInclude Include="src\Button.h" />
+    <ClInclude Include="src\IsClickable.h" />
     <ClInclude Include="src\TankBottom.h" />
     <ClInclude Include="src\TankTreads.h" />
   </ItemGroup>

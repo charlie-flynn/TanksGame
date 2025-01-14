@@ -4,6 +4,13 @@
 #include "engine/TwostActor.h"
 #include "src/TankBottom.h"
 #include "src/TankTreads.h"
+#include "src/Button.h"
+#include <iostream>
+
+void TestFunction()
+{
+    std::cout << "Test!" << std::endl;
+}
 
 int main(void)
 {
@@ -11,9 +18,11 @@ int main(void)
     
     TankBottom tankBottom = TankBottom();
     TankTreads tankTreads = TankTreads();
+    Button testButton = Button(*TestFunction);
 
     Actor::Instantiate(&tankBottom, nullptr, Vec2(39, 39), 0);
     Actor::Instantiate(&tankTreads, tankBottom.GetTransform(), MathLibrary::Vector2(25, 25), 0);
+    Actor::Instantiate(&testButton, nullptr, Vec2(50, 50), 0);
 
     while (!WindowShouldClose())
     {
@@ -30,4 +39,6 @@ int main(void)
     CloseWindow();
 
     return 0;
+
+
 }

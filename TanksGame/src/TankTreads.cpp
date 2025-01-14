@@ -30,7 +30,8 @@ void TankTreads::RotateToDirection(Vec2 direction)
 	if (direction.x != 0 && direction.y != 0)
 	{
 		direction.x *= -1;
-		// if the direction is very specifically this direction, pretend its the opposite of that
+
+		// if the direction is very specifically (-0.707107, 0.707107), pretend its the opposite of that
 		if (abs(direction.x - -0.707107f) < 0.01f && abs(direction.y - 0.707107f) < 0.01f)
 			direction = Vec2(0.707107f, -0.707107f);
 	}
@@ -38,7 +39,7 @@ void TankTreads::RotateToDirection(Vec2 direction)
 	Vec2 forward = GetTransform()->GetForwardVector();
 	Vec2 absoluteDirection = Vec2(abs(direction.x), abs(direction.y));
 
-	// if the opposite of the direction is equal to the absolute value of the direction, use the angle from the absolute value of the direction
+	// if the inverse of the direction is equal to the absolute value of the direction, use the angle from the absolute value of the direction
 	// otherwise, use the direction itself
 	if (Vec2(direction.x * -1, direction.y * -1) == absoluteDirection)
 	{

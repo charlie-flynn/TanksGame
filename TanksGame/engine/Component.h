@@ -18,9 +18,9 @@ public:
 	bool GetEnabled() { return m_enabled; };
 	void SetEnabled(bool value);
 
-	void Start() { m_started = true; };
-	void Update(double deltaTime) {};
-	void End() {};
+	virtual void Start() { m_started = true; };
+	virtual void Update(double deltaTime) {};
+	virtual void End() {};
 	
 private:
 	Actor* m_owner;

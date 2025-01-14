@@ -15,7 +15,7 @@ public:
 	static Actor* Instantiate(Actor* actor, Transform2D* transform, const Vec2 position, const float rotation);
 	void Destroy(Actor* actor);
 	void virtual Start();
-	void virtual Update(double deltaTime) {};
+	void virtual Update(double deltaTime);
 	void virtual End() {};
 	void virtual OnCollision(Actor* other) {};
 	bool GetStarted() { return m_started; };
@@ -66,7 +66,7 @@ template<typename T>
 inline T* Actor::AddComponent(T component)
 {
 	m_components.Add(component);
-	return nullptr;
+	return component;
 }
 
 template<typename T>
@@ -107,7 +107,7 @@ template<typename T>
 inline T* Actor::GetComponents()
 {
 	int length = 0;
-	T* components = T[];
+	T* components = T[m_components.Length()];
 
 	for (int i = 0; i < m_components.Length(); i++)
 	{

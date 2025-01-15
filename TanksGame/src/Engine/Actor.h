@@ -2,6 +2,8 @@
 #include "DynamicArray.h"
 #include "vector2.h"
 
+typedef MathLibrary::Vector2 Vec2;
+
 class Transform2D;
 class Component;
 
@@ -11,6 +13,7 @@ class Actor
 {
 public:
 	Actor();
+public:
 	~Actor();
 	static Actor* Instantiate(Actor* actor, Transform2D* transform, const Vec2 position, const float rotation);
 	void Destroy(Actor* actor);

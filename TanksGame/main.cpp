@@ -21,7 +21,7 @@ int main(void)
     Button testButton = Button(Vec2(120, 30), *TestFunction);
 
     Actor::Instantiate(&tankBottom, nullptr, Vec2(39, 39), 0);
-    Actor::Instantiate(&tankTreads, tankBottom.GetTransform(), MathLibrary::Vector2(25, 25), 0);
+    Actor::Instantiate(&tankTreads, tankBottom.GetTransform(), Vec2(25, 25), 0);
     Actor::Instantiate(&testButton, nullptr, Vec2(50, 50), 0);
 
     while (!WindowShouldClose())

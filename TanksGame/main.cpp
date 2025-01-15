@@ -1,10 +1,8 @@
 #include "raylib.h"
-#include "engine/Transform2D.h"
-#include "engine/TestActor.h"
-#include "engine/TwostActor.h"
-#include "src/TankBottom.h"
-#include "src/TankTreads.h"
-#include "src/Button.h"
+#include "src/Engine/Transform2D.h"
+#include "src/Game/TankBottom.h"
+#include "src/Game/TankTreads.h"
+#include "src/Game/Button.h"
 #include <iostream>
 
 void TestFunction()

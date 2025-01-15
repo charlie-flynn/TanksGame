@@ -139,28 +139,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="engine\Actor.cpp" />
-    <ClCompile Include="engine\Component.cpp" />
+    <ClCompile Include="src\Engine\Actor.cpp" />
+    <ClCompile Include="src\Engine\Component.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="engine\TestActor.cpp" />
-    <ClCompile Include="engine\Transform2D.cpp" />
-    <ClCompile Include="engine\TwostActor.cpp" />
-    <ClCompile Include="src\Button.cpp" />
-    <ClCompile Include="src\IsClickable.cpp" />
-    <ClCompile Include="src\TankBottom.cpp" />
-    <ClCompile Include="src\TankTreads.cpp" />
+    <ClCompile Include="src\Engine\TestActor.cpp" />
+    <ClCompile Include="src\Engine\Transform2D.cpp" />
+    <ClCompile Include="src\Engine\TwostActor.cpp" />
+    <ClCompile Include="src\Game\Button.cpp" />
+    <ClCompile Include="src\Game\IsClickable.cpp" />
+    <ClCompile Include="src\Game\TankBottom.cpp" />
+    <ClCompile Include="src\Game\TankTreads.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="engine\Actor.h" />
-    <ClInclude Include="engine\Component.h" />
-    <ClInclude Include="engine\DynamicArray.h" />
-    <ClInclude Include="engine\TestActor.h" />
-    <ClInclude Include="engine\Transform2D.h" />
-    <ClInclude Include="engine\TwostActor.h" />
-    <ClInclude Include="src\Button.h" />
-    <ClInclude Include="src\IsClickable.h" />
-    <ClInclude Include="src\TankBottom.h" />
-    <ClInclude Include="src\TankTreads.h" />
+    <ClInclude Include="src\Engine\Actor.h" />
+    <ClInclude Include="src\Engine\Component.h" />
+    <ClInclude Include="src\Engine\DynamicArray.h" />
+    <ClInclude Include="src\Engine\TestActor.h" />
+    <ClInclude Include="src\Engine\Transform2D.h" />
+    <ClInclude Include="src\Engine\TwostActor.h" />
+    <ClInclude Include="src\Game\Button.h" />
+    <ClInclude Include="src\Game\IsClickable.h" />
+    <ClInclude Include="src\Game\TankBottom.h" />
+    <ClInclude Include="src\Game\TankTreads.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

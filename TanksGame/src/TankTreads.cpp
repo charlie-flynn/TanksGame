@@ -31,9 +31,9 @@ void TankTreads::RotateToDirection(Vec2 direction)
 	{
 		direction.x *= -1;
 
-		// if the direction is very specifically (-0.707107, 0.707107), pretend its the opposite of that
-		if (abs(direction.x - -0.707107f) < 0.01f && abs(direction.y - 0.707107f) < 0.01f)
-			direction = Vec2(0.707107f, -0.707107f);
+		// if the direction is very specifically (0.707107, -0.707107), pretend its the opposite of that
+		if (abs(direction.x - 0.707107f) < 0.01f && abs(direction.y - -0.707107f) < 0.01f)
+			direction = Vec2(-0.707107f, 0.707107f);
 	}
 
 	Vec2 forward = GetTransform()->GetForwardVector();

@@ -5,9 +5,9 @@
 class IsClickable : public Component 
 {
 public:
-	IsClickable();
-	IsClickable(Actor* owner);
-	~IsClickable();
+	IsClickable() : Component() {};
+	IsClickable(Actor* owner) : Component(owner) {};
+	~IsClickable() = default;
 	void SetOnClickEvent(void (*functionPointer)()) { OnClickEvent = functionPointer; };
 	void Update(double deltaTime) override;
 

@@ -18,7 +18,7 @@ int main(void)
     
     TankBottom tankBottom = TankBottom();
     TankTreads tankTreads = TankTreads();
-    Button testButton = Button(Vec2(120, 30), *TestFunction);
+    Button testButton = Button(Vec2(120, 30), (char*)"Test Button", 11, *TestFunction);
 
     Actor::Instantiate(&tankBottom, nullptr, Vec2(39, 39), 0);
     Actor::Instantiate(&tankTreads, tankBottom.GetTransform(), Vec2(25, 25), 0);

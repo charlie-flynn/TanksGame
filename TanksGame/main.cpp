@@ -1,10 +1,8 @@
 #include "raylib.h"
-#include "engine/Transform2D.h"
-#include "engine/TestActor.h"
-#include "engine/TwostActor.h"
-#include "src/TankBottom.h"
-#include "src/TankTreads.h"
-#include "src/Button.h"
+#include "src/Engine/Transform2D.h"
+#include "src/Game/TankBottom.h"
+#include "src/Game/TankTreads.h"
+#include "src/Game/Button.h"
 #include <iostream>
 
 void TestFunction()
@@ -18,7 +16,7 @@ int main(void)
     
     TankBottom tankBottom = TankBottom();
     TankTreads tankTreads = TankTreads();
-    Button testButton = Button(Vec2(120, 30), *TestFunction);
+    Button testButton = Button(Vec2(120, 30), (char*)"Test Button", 11, *TestFunction);
 
     Actor::Instantiate(&tankBottom, nullptr, Vec2(39, 39), 0);
     Actor::Instantiate(&tankTreads, tankBottom.GetTransform(), Vec2(25, 25), 0);

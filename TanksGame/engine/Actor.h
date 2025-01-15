@@ -31,7 +31,7 @@ public:
 	*/
 
 	template <typename T>
-	T* AddComponent(T component);
+	T* AddComponent(T* component);
 	template <typename T>
 	T* AddComponent();
 	template <typename T>
@@ -49,7 +49,7 @@ private:
 	bool m_started;
 	bool m_enabled;
 
-	DynamicArray<Component> m_components;
+	DynamicArray<Component*> m_components;
 
 	void virtual OnEnable() {};
 	void virtual OnDisable() {};
@@ -63,22 +63,22 @@ private:
 };
 
 template<typename T>
-inline T* Actor::AddComponent(T component)
+inline T* Actor::AddComponent(T* component)
 {
-	m_components.Add(component);
+	m_components.Add((Component*)component);
 	return component;
 }
 
 template<typename T>
 inline T* Actor::AddComponent()
 {
-	return AddComponent(new T(this));
+	return AddComponent<T>(new T(this));
 }
 
 template<typename T>
 inline void Actor::RemoveComponent(T component)
 {
-	m_components.Remove(component);
+	m_components.Remove((Component*)component);
 	return;
 }
 

@@ -17,7 +17,8 @@ Component::Component(Actor* owner)
 
 Component::~Component()
 {
-	delete m_owner;
+	if (m_owner != nullptr)
+		delete m_owner;
 	m_owner = nullptr;
 }
 

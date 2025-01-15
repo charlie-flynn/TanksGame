@@ -32,6 +32,7 @@ int main(void)
 
         tankTreads.Update(0.0024);
         tankBottom.Update(0.0024);
+        testButton.Update(0.0024);
 
         EndDrawing();
     }

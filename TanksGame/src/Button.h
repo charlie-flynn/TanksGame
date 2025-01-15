@@ -5,8 +5,9 @@
 class Button : public Actor
 {
 public:
-	Button(void (*clickEvent)());
+	Button(void (*clickEvent)() = nullptr);
 	~Button();
 
+	void Start() override;
 	void Update(double deltaTime) override;
 };

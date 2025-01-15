@@ -50,7 +50,7 @@ void Actor::Update(double deltaTime)
 {
 	for (int i = 0; i < m_components.Length(); i++)
 	{
-		m_components[i].Update(deltaTime);
+		m_components[i]->Update(deltaTime);
 	}
 }
 

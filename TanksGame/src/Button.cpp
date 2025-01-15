@@ -3,15 +3,20 @@
 #include "../engine/Transform2D.h"
 #include <raylib.h>
 
-Button::Button(void (*clickEvent)())
+Button::Button(void(*clickEvent)()) : Actor()
 {
-	Actor::Actor();
 	AddComponent<IsClickable>()->SetOnClickEvent(clickEvent);
+	GetTransform()->SetLocalScale(Vec2(40, 40));
 }
 
-Button::~Button()
+Button::~Button() 
 {
-	Actor::~Actor();
+
+}
+
+void Button::Start()
+{
+
 }
 
 void Button::Update(double deltaTime)

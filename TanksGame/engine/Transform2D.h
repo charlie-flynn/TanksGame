@@ -14,13 +14,14 @@ public:
 	Transform2D(Actor& owner);
 	~Transform2D();
 
-	Mat3 GetLocalRotation() { return *m_localRotation; }
+	Mat3* GetLocalRotation() { return m_localRotation; }
 	Vec2 GetLocalPosition() { return Vec2(m_localTranslation->m02, m_localTranslation->m12); }
 	Vec2 GetGlobalPosition() { return Vec2(m_globalMatrix->m02, m_globalMatrix->m12); }
 	Vec2 GetLocalScale() { return Vec2(m_localScale->m00, m_localScale->m11); }
 	Vec2 GetGlobalScale();
 	float GetLocalRotationAngle() { return m_localRotationAngle; }
 	float GetGlobalRotationAngle();
+	Vec2 GetForwardVector() { return Vec2(m_globalMatrix->m00, m_globalMatrix->m10); };
 
 	void SetLocalRotation(const Mat3& rotation);
 	void SetLocalPosition(Vec2 position);
@@ -29,6 +30,8 @@ public:
 	void Translate(Vec2 direction);
 	void Rotate(float radians);
 
+	DynamicArray<Transform2D*> GetChildren() { return m_children; };
+	Transform2D* GetParent() { return m_parent; };
 	void AddChild(Transform2D* child);
 	bool RemoveChild(Transform2D* child);
 

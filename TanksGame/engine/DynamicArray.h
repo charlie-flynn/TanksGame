@@ -1,5 +1,9 @@
 #pragma once
 
+#include "Component.h" // THIS IS SUPER DUPER EXTREMELY TEMPORARY!!! AS SOON AS I CAN THINK OF A SOLUTION THIS GOES GOODBYE
+// this is because if i include component.h in here everything that uses dynamic array will also have component
+// but not everything needs component! but for now dynamicarray doesnt know what to do with a component so we're just gonna have to live like this for now
+
 template<typename T>
 class DynamicArray
 {
@@ -62,7 +66,7 @@ inline DynamicArray<T>::DynamicArray(const DynamicArray<T>& other)
 {
 	m_length = other.m_length;
 	m_array = new T[m_length];
-	for (int i = 0; i < m_length, i++;)
+	for (int i = 0; i < m_length; i++)
 	{
 		m_array[i] = other.m_array[i];
 	}

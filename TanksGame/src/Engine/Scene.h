@@ -8,13 +8,13 @@ class Scene
 
 private:
 
-	 DynamicArray<Actor>& _actors;
+	 DynamicArray<Actor*> m_actors;
 
 public:
 	Scene();
 	~Scene();
 	void AddActor(Actor& actor);
-	void RemoveActor(Actor& actor);
+	void RemoveActor(Actor* actor);
 	virtual void Start();
 	virtual void Update(double deltatime);
 	virtual void End();

@@ -17,7 +17,7 @@ Scene::~Scene()
 
 void Scene::Start()
 {
-	
+	_actors.Begin();
 }
 
 void Scene::Update(double deltaTime)

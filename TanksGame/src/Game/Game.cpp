@@ -16,7 +16,9 @@ void Game::Run()
 
 void Game::Start()
 {
-    InitWindow(800, 450, "raylib [core] example - basic window");
+    InitWindow(GetMonitorWidth(0), GetMonitorHeight(0), "raylib [core] example - basic window");
+    ToggleFullscreen();
+    SetExitKey(KEY_ESCAPE);
 }
 
 void Game::Update()

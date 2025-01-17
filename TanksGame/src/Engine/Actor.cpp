@@ -4,23 +4,24 @@
 Actor::Actor() 
 	: m_transform(new Transform2D(*this)), m_enabled(false), m_started(false)
 {
-
+	Start();
 }
 
 Actor::~Actor()
 {
-	
+	delete m_transform;
 }
 
-Actor Actor::Instantiate(Actor& actor, Transform2D* parent, const Vec2 position, const float rotation)
+Actor* Actor::Instantiate(Actor* actor, Transform2D* parent, const Vec2 position, const float rotation)
 {
-	actor.m_transform->SetLocalPosition(position);
-	actor.m_transform->SetLocalRotation(Mat3::createRotation(rotation));
+	// set the actor's position, rotation, and parent
+	actor->m_transform->SetLocalPosition(position);
+	actor->m_transform->SetLocalRotation(Mat3::createRotation(rotation));
 	if (parent != nullptr)
-		parent->AddChild(actor.m_transform);
+		parent->AddChild(actor->m_transform);
 
 	// add actor to current scene
-
+	
 	// return actor
 	return actor;
 }
@@ -29,23 +30,15 @@ void Actor::Destroy(Actor* actor)
 {
 
 	// remove children
+	for (int i = 0; i < m_transform->GetChildren().Length(); i++)
+	{
+		m_transform->RemoveChild(m_transform->GetChildren()[i]);
+	}
 
 	// unchild from parent
+	m_transform->GetParent()->RemoveChild(this->GetTransform());
 
 	// remove from current scene
-}
-
-void Actor::OnEnable()
-{
-}
-
-void Actor::OnDisable()
-{
-}
-
-Transform2D Actor::GetTransformDereferenced()
-{
-	return *m_transform;
 }
 
 void Actor::Start()
@@ -53,16 +46,12 @@ void Actor::Start()
 	m_started = true;
 }
 
-void Actor::Update()
+void Actor::Update(double deltaTime)
 {
-}
-
-void Actor::End()
-{
-}
-
-void Actor::OnCollision(Actor* other)
-{
+	for (int i = 0; i < m_components.Length(); i++)
+	{
+		m_components[i]->Update(deltaTime);
+	}
 }
 
 void Actor::SetEnabled(const bool value)

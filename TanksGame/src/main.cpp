@@ -1,31 +1,43 @@
 #include "raylib.h"
-#include "Engine/Transform2D.h"
-#include "Game/TestActor.h"
-#include "Game/TwostActor.h"
+#include "src/Engine/Transform2D.h"
+#include "src/Game/TankBottom.h"
+#include "src/Game/TankTreads.h"
+#include "src/Game/Button.h"
+#include <iostream>
+
+void TestFunction()
+{
+    std::cout << "Test!" << std::endl;
+}
 
 int main(void)
 {
     InitWindow(800, 450, "raylib [core] example - basic window");
+    
+    TankBottom tankBottom = TankBottom();
+    TankTreads tankTreads = TankTreads();
+    Button testButton = Button(Vec2(120, 30), (char*)"Test Button", 11, *TestFunction);
 
-    TestActor testGuy = TestActor();
-    TwostActor testBlue = TwostActor();
-
-    Actor::Instantiate(testGuy, nullptr, MathLibrary::Vector2(39, 39), 0);
-    Actor::Instantiate(testBlue, nullptr, MathLibrary::Vector2(49, 49), 0);
-
-    testGuy.GetTransform()->AddChild(testBlue.GetTransform());
+    Actor::Instantiate(&tankBottom, nullptr, Vec2(39, 39), 0);
+    Actor::Instantiate(&tankTreads, tankBottom.GetTransform(), Vec2(25, 25), 0);
+    Actor::Instantiate(&testButton, nullptr, Vec2(50, 50), 0);
 
     while (!WindowShouldClose())
     {
         BeginDrawing();
         ClearBackground(RAYWHITE);
         DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
+
+        tankTreads.Update(0.0024);
+        tankBottom.Update(0.0024);
+        testButton.Update(0.0024);
+
         EndDrawing();
-        testGuy.Update();
-        testBlue.Update();
     }
     
     CloseWindow();
 
     return 0;
+
+
 }

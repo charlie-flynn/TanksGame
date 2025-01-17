@@ -1,7 +1,6 @@
 #include "Transform2D.h"
 #include "Actor.h"
 #include <cmath>
-#include <iostream>
 
 Transform2D::Transform2D(Actor& owner) 
 	: m_owner(owner)
@@ -22,7 +21,7 @@ Transform2D::~Transform2D()
 	delete m_localTranslation;
 	delete m_localRotation;
 	delete m_localScale;
-	if (m_parent)
+	if (m_parent != nullptr)
 		delete m_parent;
 }
 
@@ -41,7 +40,7 @@ float Transform2D::GetGlobalRotationAngle()
 void Transform2D::SetLocalRotation(const Mat3& rotation)
 {
 	*m_localRotation = rotation;
-	m_localRotationAngle = -(float)atan2(m_localRotation->m01, m_localRotation->m00);
+	m_localRotationAngle = (float)atan2(m_localRotation->m01, m_localRotation->m00);
 	UpdateTransforms();
 }
 
@@ -66,7 +65,7 @@ void Transform2D::Translate(const Vec2 direction)
 
 void Transform2D::Rotate(const float radians)
 {
-	SetLocalRotation(GetLocalRotation() + Mat3::createRotation(radians));
+	SetLocalRotation(Mat3::createRotation(m_localRotationAngle + radians));
 }
 
 void Transform2D::AddChild(Transform2D* child)
@@ -82,14 +81,14 @@ void Transform2D::AddChild(Transform2D* child)
 
 bool Transform2D::RemoveChild(Transform2D* child)
 {
-	int oldSize = m_children.Length();
+	int oldLength = m_children.Length();
 
 	if (m_children.Length() == 0)
 		return false;
 
 	m_children.Remove(child);
 
-	if (m_children.Length() == oldSize)
+	if (m_children.Length() == oldLength)
 	{
 
 		return false;

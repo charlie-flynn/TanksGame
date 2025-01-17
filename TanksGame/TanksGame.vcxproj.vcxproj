@@ -140,19 +140,27 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Engine\Actor.cpp" />
-    <ClCompile Include="src\Engine\Scene.cpp" />
-    <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\Game\TestActor.cpp" />
+    <ClCompile Include="src\Engine\Component.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\Engine\TestActor.cpp" />
     <ClCompile Include="src\Engine\Transform2D.cpp" />
-    <ClCompile Include="src\Game\TwostActor.cpp" />
+    <ClCompile Include="src\Engine\TwostActor.cpp" />
+    <ClCompile Include="src\Game\Button.cpp" />
+    <ClCompile Include="src\Game\IsClickable.cpp" />
+    <ClCompile Include="src\Game\TankBottom.cpp" />
+    <ClCompile Include="src\Game\TankTreads.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Engine\Actor.h" />
+    <ClInclude Include="src\Engine\Component.h" />
     <ClInclude Include="src\Engine\DynamicArray.h" />
-    <ClInclude Include="src\Engine\Scene.h" />
-    <ClInclude Include="src\Game\TestActor.h" />
+    <ClInclude Include="src\Engine\TestActor.h" />
     <ClInclude Include="src\Engine\Transform2D.h" />
-    <ClInclude Include="src\Game\TwostActor.h" />
+    <ClInclude Include="src\Engine\TwostActor.h" />
+    <ClInclude Include="src\Game\Button.h" />
+    <ClInclude Include="src\Game\IsClickable.h" />
+    <ClInclude Include="src\Game\TankBottom.h" />
+    <ClInclude Include="src\Game\TankTreads.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

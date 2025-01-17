@@ -148,6 +148,7 @@
     <ClCompile Include="src\Game\Button.cpp" />
     <ClCompile Include="src\Game\Game.cpp" />
     <ClCompile Include="src\Game\IsClickable.cpp" />
+    <ClCompile Include="src\Game\LandscapeScene.cpp" />
     <ClCompile Include="src\Game\TankBottom.cpp" />
     <ClCompile Include="src\Game\TankTreads.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -163,6 +164,7 @@
     <ClInclude Include="src\Game\Button.h" />
     <ClInclude Include="src\Game\Game.h" />
     <ClInclude Include="src\Game\IsClickable.h" />
+    <ClInclude Include="src\Game\LandscapeScene.h" />
     <ClInclude Include="src\Game\TankBottom.h" />
     <ClInclude Include="src\Game\TankTreads.h" />
   </ItemGroup>

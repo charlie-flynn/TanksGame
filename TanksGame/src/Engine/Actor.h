@@ -7,8 +7,6 @@ typedef MathLibrary::Vector2 Vec2;
 class Transform2D;
 class Component;
 
-typedef MathLibrary::Vector2 Vec2;
-
 class Actor 
 {
 public:

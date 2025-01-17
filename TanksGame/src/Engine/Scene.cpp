@@ -6,7 +6,9 @@
 
 
 Scene::Scene()
-	 :Scene(){}
+{
+	m_actors = DynamicArray<Actor*>();
+}
 	
 
 
@@ -22,31 +24,31 @@ void Scene::Start()
 
 void Scene::Update(double deltaTime)
 {
-	for (int i = 0; i < _actors.Length(); i++)
+	for (int i = 0; i < m_actors.Length(); i++)
 	{
-		if (!_actors[i].GetStarted())
+		if (!m_actors[i]->GetStarted())
 		{
-			_actors[i].Start();
+			m_actors[i]->Start();
 		}
 	}
 }
 
 void Scene::End()
 {
-	for (int i = 0; i < _actors.Length(); i++)
+	for (int i = 0; i < m_actors.Length(); i++)
 	{
-		_actors.~DynamicArray();
+		m_actors[i]->Destroy(m_actors[i]);
 	}
 }
 
 void Scene::AddActor(Actor& actor)
 {
-	_actors.AddUnique(actor);	
+	m_actors.AddUnique(&actor);	
 }
 
-void Scene::RemoveActor(Actor& actor)
+void Scene::RemoveActor(Actor* actor)
 {
-	_actors.Remove(actor);
+	m_actors.Remove(actor);
 	return;
 }
 

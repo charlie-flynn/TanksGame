@@ -2,6 +2,8 @@
 
 #include "Engine/Actor.h"
 
+class CircleCollider;
+
 class TankBottom : public Actor
 {
 public:
@@ -11,5 +13,6 @@ public:
 
 private:
 	float m_speed;
+	CircleCollider* m_collider;
 
 };

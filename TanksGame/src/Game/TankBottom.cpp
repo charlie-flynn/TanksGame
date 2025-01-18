@@ -1,10 +1,12 @@
 #include "TankBottom.h"
 #include "raylib.h"
-#include "../engine/Transform2D.h"
+#include "Engine/Transform2D.h"
+#include "Engine/SquareCollider.h"
 
 TankBottom::TankBottom()
 {
 	m_speed = 50.0f;
+	AddComponent<CircleCollider>();
 }
 
 void TankBottom::Update(double deltaTime)

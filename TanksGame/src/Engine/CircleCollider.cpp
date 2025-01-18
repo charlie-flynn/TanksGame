@@ -17,7 +17,7 @@ bool CircleCollider::CheckCollisionCircle(CircleCollider* other)
 
     if (sumRadii >= distance)
     {
-        m_collidedActor = other->GetOwner();
+       SetCollidedActor(other->GetOwner());
         return true;
     }
     else

@@ -1,12 +1,6 @@
 #include "Component.h"
 #include "Actor.h"
 
-Component::Component()
-{
-	m_owner = nullptr;
-	m_enabled = true;
-	m_started = false;
-}
 
 Component::Component(Actor* owner)
 {

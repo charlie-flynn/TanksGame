@@ -40,9 +40,9 @@ public:
 	template <typename T>
 	void RemoveComponent();
 	template <typename T>
-	T* GetComponent();
+	Component* GetComponent();
 	template <typename T>
-	T* GetComponents();
+	Component* GetComponents();
 
 private:
 	Transform2D* m_transform;
@@ -93,19 +93,20 @@ inline void Actor::RemoveComponent()
 }
 
 template<typename T>
-inline T* Actor::GetComponent()
+inline Component* Actor::GetComponent()
 {
-	// if this code doesnt work tell me because i dunno if it works
+	// this doesnt work lol.
 	for (int i = 0; i < m_components.Length(); i++)
 	{
-		if (typeid(m_components[i]) == typeid(T))
-			return m_components[i];
+			if (Component* dynamic_cast<T*> (m_components[i]))
+				return m_components[i];
+
 	}
 	return nullptr;
 }
 
 template<typename T>
-inline T* Actor::GetComponents()
+inline Component* Actor::GetComponents()
 {
 	int length = 0;
 	T* components = T[m_components.Length()];

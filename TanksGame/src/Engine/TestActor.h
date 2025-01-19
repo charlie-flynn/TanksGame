@@ -1,6 +1,7 @@
 #pragma once
 #include "Engine/Actor.h"
 
+class SquareCollider;
 
 class TestActor : public Actor
 {
@@ -21,6 +22,8 @@ public:
 	*/
 
 private:
+
+	SquareCollider* m_collider;
 
 	void OnEnable() override;
 	void OnDisable() override;

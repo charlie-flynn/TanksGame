@@ -2,7 +2,7 @@
 
 #include "Engine/Actor.h"
 
-class CircleCollider;
+class SquareCollider;
 
 class TankBottom : public Actor
 {
@@ -13,6 +13,6 @@ public:
 
 private:
 	float m_speed;
-	CircleCollider* m_collider;
+	SquareCollider* m_collider;
 
 };

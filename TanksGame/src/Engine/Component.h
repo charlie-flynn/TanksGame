@@ -7,8 +7,7 @@ class Actor;
 class Component
 {
 public:
-	Component();
-	Component(Actor* owner);
+	Component(Actor* owner = nullptr);
 	~Component();
 	Component(Component& other);
 

@@ -5,6 +5,11 @@
 
 
 
+CircleCollider::CircleCollider(Actor* owner, float radius) : Collider(owner)
+{
+    SetCollisionRadius(radius);
+}
+
 void CircleCollider::Draw()
 {
 	DrawCircleLinesV({ GetOwner()->GetTransform()->GetGlobalPosition().x, GetOwner()->GetTransform()->GetGlobalPosition().y }, m_collisionRadius, RED);

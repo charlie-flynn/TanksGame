@@ -7,6 +7,7 @@ class SquareCollider;
 class Collider : public Component
 {
 public:
+	Collider(Actor* owner = nullptr) : Component(owner) {};
 	~Collider();
 	Actor* GetCollidedActor() { return m_collidedActor; };
 	bool CheckCollision(Actor* other);

@@ -2,11 +2,12 @@
 #include "raylib.h"
 #include "Engine/Transform2D.h"
 #include "Engine/SquareCollider.h"
+#include "Engine/SquareCollider.h"
 
 TankBottom::TankBottom()
 {
 	m_speed = 50.0f;
-	AddComponent<CircleCollider>();
+	AddComponent<SquareCollider>(m_collider = new SquareCollider(new Vec2(12, 12), this));
 }
 
 void TankBottom::Update(double deltaTime)
@@ -20,4 +21,6 @@ void TankBottom::Update(double deltaTime)
 	// draw tank bottom
 	DrawRectangleV(Vector2() = { GetTransform()->GetGlobalPosition().x, GetTransform()->GetGlobalPosition().y },
 		Vector2() = { GetTransform()->GetGlobalScale().x * 50, GetTransform()->GetGlobalScale().y * 50 }, DARKGREEN);
+
+	m_collider->Draw();
 }

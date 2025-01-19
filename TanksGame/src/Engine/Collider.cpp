@@ -1,5 +1,6 @@
 #include "Collider.h"
 #include "CircleCollider.h"
+#include "Actor.h"
 
 Collider::~Collider()
 {

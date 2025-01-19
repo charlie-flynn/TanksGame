@@ -43,9 +43,6 @@ void Game::Update()
         tankBottom.Update(0.0024);
         testButton.Update(0.0024);
 
-        if (testCollisionActor.GetComponent<SquareCollider>())
-            std::cout << "BING! COLISION" << std::endl;
-
         EndDrawing();
     }
 

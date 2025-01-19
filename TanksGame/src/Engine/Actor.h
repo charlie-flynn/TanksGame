@@ -37,12 +37,15 @@ public:
 	T* AddComponent();
 	template <typename T>
 	void RemoveComponent(T component);
+	// deprecated functions because i genuinely could not get these to work to save my life
+	/*
 	template <typename T>
 	void RemoveComponent();
 	template <typename T>
 	Component* GetComponent();
 	template <typename T>
 	Component* GetComponents();
+	*/
 
 private:
 	Transform2D* m_transform;
@@ -83,6 +86,7 @@ inline void Actor::RemoveComponent(T component)
 	return;
 }
 
+/*
 template<typename T>
 inline void Actor::RemoveComponent()
 {
@@ -98,8 +102,6 @@ inline Component* Actor::GetComponent()
 	// this doesnt work lol.
 	for (int i = 0; i < m_components.Length(); i++)
 	{
-			if (Component* dynamic_cast<T*> (m_components[i]))
-				return m_components[i];
 
 	}
 	return nullptr;
@@ -122,3 +124,4 @@ inline Component* Actor::GetComponents()
 
 	return components;
 }
+*/

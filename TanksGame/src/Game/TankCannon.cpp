@@ -12,7 +12,7 @@ void TankCannon::Update(double deltaTime)
 		if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
 		{
 			std::cout << "Pew!" << std::endl; // replace this line with shooting a projectile later
-			m_fireRate = 1;
+			m_fireRate = 0.5;
 		}
 	}
 	else

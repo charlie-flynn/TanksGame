@@ -5,6 +5,7 @@
 #include "Game/Button.h"
 #include "Engine/TestActor.h"
 #include "Engine/SquareCollider.h"
+#include "TankCannon.h"
 
 #include <iostream>
 #include <raylib.h>
@@ -23,6 +24,7 @@ void Game::Start()
 
 void Game::Update()
 {
+    TankCannon tankCannon = TankCannon();
     TankBottom tankBottom = TankBottom();
     TankTreads tankTreads = TankTreads();
     Button testButton = Button(Vec2(120, 30), (char*)"Test Button", 11, *TestFunction);
@@ -30,6 +32,7 @@ void Game::Update()
 
     Actor::Instantiate(&tankBottom, nullptr, Vec2(39, 39), 0);
     Actor::Instantiate(&tankTreads, tankBottom.GetTransform(), Vec2(25, 25), 0);
+    Actor::Instantiate(&tankCannon, tankBottom.GetTransform(), Vec2(25, 25), 0);
     Actor::Instantiate(&testButton, nullptr, Vec2(50, 50), 0);
     Actor::Instantiate(&testCollisionActor, nullptr, Vec2(120, 200), 0);
 
@@ -41,6 +44,7 @@ void Game::Update()
 
         tankTreads.Update(0.0024);
         tankBottom.Update(0.0024);
+        tankCannon.Update(0.0024);
         testButton.Update(0.0024);
         testCollisionActor.Update(0.024);
 

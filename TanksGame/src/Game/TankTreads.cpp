@@ -8,16 +8,17 @@ void TankTreads::Update(double deltaTime)
 	// check for input and rotate in that direction accordingly
 
 
+
+	RotateToDirection(Vec2(IsKeyDown(KEY_D) - IsKeyDown(KEY_A),
+		IsKeyDown(KEY_S) - IsKeyDown(KEY_W)).getNormalized());
+
+	// draw the treads
 	Rectangle rec = Rectangle();
 	rec.height = 40;
 	rec.width = 70;
 	rec.x = GetTransform()->GetGlobalPosition().x;
 	rec.y = GetTransform()->GetGlobalPosition().y;
 
-	RotateToDirection(Vec2(IsKeyDown(KEY_RIGHT) - IsKeyDown(KEY_LEFT),
-		IsKeyDown(KEY_DOWN) - IsKeyDown(KEY_UP)).getNormalized());
-
-	// draw the treads
 	DrawRectanglePro(rec, { rec.width / 2, rec.height / 2 }, GetTransform()->GetGlobalRotationAngle() * (180 / PI) + 90, GRAY);
 }
 

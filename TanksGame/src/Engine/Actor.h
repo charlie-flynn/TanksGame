@@ -6,6 +6,7 @@ typedef MathLibrary::Vector2 Vec2;
 
 class Transform2D;
 class Component;
+class Collider;
 
 class Actor 
 {
@@ -23,6 +24,7 @@ public:
 	bool GetEnabled() { return m_enabled; };
 	void SetEnabled(const bool value);
 	Transform2D* GetTransform();
+	virtual Collider* GetCollider() { return nullptr; };
 	// commenting out the component functions to do later
 	/*
 	AddComponent
@@ -37,6 +39,7 @@ public:
 	T* AddComponent();
 	template <typename T>
 	void RemoveComponent(T component);
+
 	// deprecated functions because i genuinely could not get these to work to save my life
 	/*
 	template <typename T>

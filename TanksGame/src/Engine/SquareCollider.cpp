@@ -8,14 +8,7 @@ void SquareCollider::Draw()
 
     Vec2 ownerPosition = GetOwner()->GetTransform()->GetGlobalPosition();
 
-    Rectangle rectangle = Rectangle();
-    rectangle.width = m_colliderScale->x;
-    rectangle.height = m_colliderScale->y;
-    rectangle.x = ownerPosition.x;
-    rectangle.y = ownerPosition.y;
-
-
-    DrawRectangleLinesEx(rectangle, 3, RED);
+    DrawRectangleLines(ownerPosition.x, ownerPosition.y, m_colliderScale->x, m_colliderScale->y, RED);
 }
 
 bool SquareCollider::CheckCollisionSquare(SquareCollider* other)
@@ -25,10 +18,10 @@ bool SquareCollider::CheckCollisionSquare(SquareCollider* other)
     Vec2 otherDimensions = *other->GetDimensions();
 
     // AABB collision. if collided, return true. otherwise return false
-    if (otherOwnerPosition.x < ownerPosition.y + m_colliderScale->x &&
-        otherOwnerPosition.x + otherDimensions.x > m_colliderScale->x &&
+    if (otherOwnerPosition.x < ownerPosition.x + m_colliderScale->x &&
+        otherOwnerPosition.x + otherDimensions.x > ownerPosition.x &&
         otherOwnerPosition.y < ownerPosition.y + m_colliderScale->y &&
-        otherOwnerPosition.y + otherDimensions.y > m_colliderScale->y)
+        otherOwnerPosition.y + otherDimensions.y > ownerPosition.y)
         return true;
         
     return false;

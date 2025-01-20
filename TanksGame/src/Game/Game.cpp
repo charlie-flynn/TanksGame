@@ -1,12 +1,4 @@
 #include "Game.h"
-#include "Engine/Actor.h"
-#include "Game/TankBottom.h"
-#include "Game/TankTreads.h"
-#include "Game/Button.h"
-#include "Engine/TestActor.h"
-#include "Engine/SquareCollider.h"
-#include "TankCannon.h"
-#include "Gem.h"
 #include "Engine/Scene.h"
 
 #include <iostream>
@@ -51,7 +43,7 @@ void Game::Run()
 
     while (!WindowShouldClose())
     {
-        currentTime = GetTime();
+        currentTime = GetTime() / 1000.0;
 
         BeginDrawing();
         ClearBackground(RAYWHITE);

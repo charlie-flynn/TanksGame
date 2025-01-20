@@ -140,8 +140,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Engine\Actor.cpp" />
+    <ClCompile Include="src\Engine\CircleCollider.cpp" />
+    <ClCompile Include="src\Engine\Collider.cpp" />
     <ClCompile Include="src\Engine\Component.cpp" />
     <ClCompile Include="src\Engine\Scene.cpp" />
+    <ClCompile Include="src\Engine\SquareCollider.cpp" />
     <ClCompile Include="src\Engine\TestActor.cpp" />
     <ClCompile Include="src\Engine\Transform2D.cpp" />
     <ClCompile Include="src\Engine\TwostActor.cpp" />
@@ -154,9 +157,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Engine\Actor.h" />
+    <ClInclude Include="src\Engine\CircleCollider.h" />
+    <ClInclude Include="src\Engine\Collider.h" />
     <ClInclude Include="src\Engine\Component.h" />
     <ClInclude Include="src\Engine\DynamicArray.h" />
     <ClInclude Include="src\Engine\Scene.h" />
+    <ClInclude Include="src\Engine\SquareCollider.h" />
     <ClInclude Include="src\Engine\TestActor.h" />
     <ClInclude Include="src\Engine\Transform2D.h" />
     <ClInclude Include="src\Engine\TwostActor.h" />

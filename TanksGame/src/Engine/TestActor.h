@@ -1,6 +1,8 @@
 #pragma once
 #include "Engine/Actor.h"
 
+class Collider;
+class SquareCollider;
 
 class TestActor : public Actor
 {
@@ -12,6 +14,8 @@ public:
 	void Update(double deltaTime) override;
 	void End() override;
 	void OnCollision(Actor* other) override;
+	Collider* GetCollider() override { return (Collider*)m_collider; };
+	
 	// commenting out the component functions to do later
 	/*
 	AddComponent
@@ -21,6 +25,8 @@ public:
 	*/
 
 private:
+
+	SquareCollider* m_collider;
 
 	void OnEnable() override;
 	void OnDisable() override;

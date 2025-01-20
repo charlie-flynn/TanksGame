@@ -24,6 +24,7 @@ void Button::Update(double deltaTime)
 	Vec2 buttonPosition = GetTransform()->GetGlobalPosition();
 	Vec2 buttonScale = GetTransform()->GetGlobalScale();
 
+	// draw the button
 	DrawRectangle(
 		buttonPosition.x,
 		buttonPosition.y,
@@ -34,6 +35,7 @@ void Button::Update(double deltaTime)
 	if (text != nullptr)
 		DrawTextPro(Font(), text, { (buttonScale.x / 2) - textLength * 2.52f, buttonScale.y / 3}, {-buttonPosition.x, -buttonPosition.y}, 0, buttonScale.y / 3, 1, {0, 0, 0, 255});
 
+	// if the mouse is colliding with the button, make it look darker
 	if (mousePosition.x < buttonPosition.x + buttonScale.x &&
 		mousePosition.x + 2 > buttonPosition.x &&
 		mousePosition.y < buttonPosition.y + buttonScale.y &&

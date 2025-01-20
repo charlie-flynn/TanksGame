@@ -1,5 +1,5 @@
 #pragma once
-#include "../engine/Component.h"
+#include "Engine/Component.h"
 
 
 class IsClickable : public Component 

@@ -1,7 +1,7 @@
 #include "IsClickable.h"
 #include "raylib.h"
-#include "../engine/Actor.h"
-#include "../engine/Transform2D.h"
+#include "Engine/Actor.h"
+#include "Engine/Transform2D.h"
 
 void IsClickable::Update(double deltaTime)
 {

@@ -2,7 +2,7 @@
 #include "Transform2D.h"
 #include "Component.h"
 
-Actor::Actor(char const* name) 
+Actor::Actor(char const* name)
 	: m_transform(new Transform2D(*this)), m_enabled(false), m_started(false), m_name(name)
 {
 }
@@ -10,6 +10,9 @@ Actor::Actor(char const* name)
 Actor::~Actor()
 {
 	delete m_transform;
+	m_transform = nullptr;
+	delete m_name;
+	m_name = nullptr;
 }
 
 Actor* Actor::Instantiate(Actor* actor, Transform2D* parent, const Vec2 position, const float rotation)
@@ -28,7 +31,6 @@ Actor* Actor::Instantiate(Actor* actor, Transform2D* parent, const Vec2 position
 
 void Actor::Destroy(Actor* actor)
 {
-
 	// remove children
 	for (int i = 0; i < m_transform->GetChildren().Length(); i++)
 	{
@@ -36,9 +38,12 @@ void Actor::Destroy(Actor* actor)
 	}
 
 	// unchild from parent
-	m_transform->GetParent()->RemoveChild(this->GetTransform());
+	if (m_transform->GetParent() != nullptr)
+		m_transform->GetParent()->RemoveChild(this->GetTransform());
 
 	// remove from current scene
+
+	// probly delete it and set it to nullptr too
 }
 
 void Actor::Start()

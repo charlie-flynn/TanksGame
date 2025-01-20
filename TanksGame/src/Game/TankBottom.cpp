@@ -7,7 +7,7 @@
 TankBottom::TankBottom()
 {
 	m_speed = 50.0f;
-	AddComponent<SquareCollider>(m_collider = new SquareCollider(new Vec2(12, 12), this));
+	AddComponent<SquareCollider>(m_collider = new SquareCollider(new Vec2(48, 48), this));
 }
 
 void TankBottom::Update(double deltaTime)

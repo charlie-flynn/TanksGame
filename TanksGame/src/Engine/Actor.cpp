@@ -2,10 +2,9 @@
 #include "Transform2D.h"
 #include "Component.h"
 
-Actor::Actor() 
-	: m_transform(new Transform2D(*this)), m_enabled(false), m_started(false)
+Actor::Actor(char const* name) 
+	: m_transform(new Transform2D(*this)), m_enabled(false), m_started(false), m_name(name)
 {
-	Start();
 }
 
 Actor::~Actor()

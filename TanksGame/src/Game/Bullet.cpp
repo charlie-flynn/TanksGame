@@ -4,7 +4,7 @@
 #include "Engine/SquareCollider.h"
 #include "raylib.h"
 
-Bullet::Bullet(Vec2 direction)
+Bullet::Bullet(Vec2 direction) : Actor("Bullet")
 {
 	m_direction = direction.getNormalized();
 	AddComponent<SquareCollider>(m_collider = new SquareCollider(new Vec2(10, 10), this));

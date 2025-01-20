@@ -4,7 +4,7 @@
 #include "Engine/SquareCollider.h"
 #include "Engine/SquareCollider.h"
 
-TankBottom::TankBottom()
+TankBottom::TankBottom() : Actor("Tank")
 {
 	m_speed = 50.0f;
 	AddComponent<SquareCollider>(m_collider = new SquareCollider(new Vec2(48, 48), this));

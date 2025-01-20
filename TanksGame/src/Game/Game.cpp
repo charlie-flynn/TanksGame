@@ -69,6 +69,8 @@ void Game::Run()
     CloseWindow();
 }
 
+// DEPRECATED CODE - dont need it anymore
+/*
 void Game::Start()
 {
     InitWindow(800, 450, "raylib [core] example - basic window");
@@ -123,3 +125,4 @@ void Game::TestFunction()
 {
     std::cout << "Button Clicked!" << std::endl;
 }
+*/

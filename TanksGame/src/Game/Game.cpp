@@ -7,15 +7,66 @@
 #include "Engine/SquareCollider.h"
 #include "TankCannon.h"
 #include "Gem.h"
+#include "Engine/Scene.h"
 
 #include <iostream>
 #include <raylib.h>
 
+Game::Game()
+{
+    m_scenes = DynamicArray<Scene*>();
+    m_currentScene = new Scene();
+}
+
+Scene* Game::GetScene(int index)
+{
+    return m_scenes[index];
+}
+
+void Game::RemoveScene(Scene* scene)
+{
+    m_scenes.Remove(scene);
+}
+
+void Game::AddScene(Scene* scene)
+{
+    m_scenes.AddUnique(scene);
+}
+
+void Game::SetCurrentScene(Scene* scene)
+{
+    if (m_currentScene != nullptr)
+        m_currentScene->End();
+    m_currentScene = scene;
+    m_currentScene->Start();
+}
+
 void Game::Run()
 {
-	Start();
-    Update();
-	End();
+    InitWindow(800, 800, "Tank Game");
+    SetTargetFPS(60);
+    double deltaTime = 1;
+    double currentTime = 0;
+    double lastTime = 0;
+
+    while (!WindowShouldClose())
+    {
+        currentTime = GetTime();
+
+        BeginDrawing();
+        ClearBackground(RAYWHITE);
+
+        m_currentScene->Update(deltaTime);
+
+        EndDrawing();
+
+        deltaTime = (currentTime - lastTime) / 1000.0;
+        lastTime = currentTime;
+    }
+
+    m_currentScene->End();
+
+    CloseWindow();
 }
 
 void Game::Start()

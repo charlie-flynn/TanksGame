@@ -22,10 +22,10 @@ public:
 	int Length() const;
 	void Resize(int newSize);
 
-	T* begin();
-	const T* begin() const;
-	T* end();
-	const T* end() const;
+	T* Begin();
+	const T* Begin() const;
+	T* End();
+	const T* End() const;
 
 	void Add(const T& value);
 	void Add(const T* array, int size);
@@ -126,25 +126,25 @@ inline void DynamicArray<T>::Resize(int newSize)
 
 
 template<typename T>
-inline T* DynamicArray<T>::begin()
+inline T* DynamicArray<T>::Begin()
 {
 	return m_array;
 }
 
 template<typename T>
-inline const T* DynamicArray<T>::begin() const
+inline const T* DynamicArray<T>::Begin() const
 {
 	return m_array;
 }
 
 template<typename T>
-inline T* DynamicArray<T>::end()
+inline T* DynamicArray<T>::End()
 {
 	return m_array + m_length;
 }
 
 template<typename T>
-inline const T* DynamicArray<T>::end() const
+inline const T* DynamicArray<T>::End() const
 {
 	return m_array + m_length;
 }

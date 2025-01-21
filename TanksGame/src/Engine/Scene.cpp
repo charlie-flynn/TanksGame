@@ -19,7 +19,7 @@ Scene::~Scene()
 
 void Scene::Start()
 {
-	
+	m_actors.Begin();
 }
 
 void Scene::Update(double deltaTime)

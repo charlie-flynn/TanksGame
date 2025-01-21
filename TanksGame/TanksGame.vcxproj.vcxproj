@@ -182,6 +182,7 @@
     <ClInclude Include="src\Game\TankCannon.h" />
     <ClInclude Include="src\Game\TankTreads.h" />
     <ClInclude Include="src\Game\Tile.h" />
+    <ClInclude Include="src\Game\WinScene.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

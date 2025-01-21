@@ -5,7 +5,7 @@
 #include "Gem.h"
 #include "Tile.h"
 
-#include <iostream>
+
 
 LandscapeScene::LandscapeScene()
 {
@@ -56,10 +56,6 @@ void LandscapeScene::Start()
 			} while (gemPosition3.x <= 1 || gemPosition3.y <= 1);
 		} while (gemPosition1 == gemPosition2 || gemPosition2 == gemPosition3 || gemPosition3 == gemPosition1);
 
-		std::cout << gemPosition1.x << ", " << gemPosition1.y << std::endl;
-		std::cout << gemPosition2.x << ", " << gemPosition2.y << std::endl;
-		std::cout << gemPosition3.x << ", " << gemPosition3.y << std::endl;
-
 		Actor::Instantiate(new Gem(), nullptr, gemPosition1 * 50, 0);
 		Actor::Instantiate(new Gem(), nullptr, gemPosition2 * 50, 0);
 		Actor::Instantiate(new Gem(), nullptr, gemPosition3 * 50, 0);
@@ -76,9 +72,6 @@ void LandscapeScene::Start()
 				Actor::Instantiate(new Tile(), nullptr, position, 0);
 		}
 	}
-
-
-	std::cout << "ACK" << std::endl;
 }
 
 void LandscapeScene::Update(double deltatime)

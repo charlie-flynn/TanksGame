@@ -3,7 +3,7 @@
 #include "Game/LandscapeScene.h"
 
 #include <chrono>
-#include <iostream>
+
 #include <raylib.h>
 
 Scene* Game::m_currentScene = nullptr;
@@ -46,7 +46,7 @@ void Game::Run()
     while (!WindowShouldClose())
     {
         BeginDrawing();
-        ClearBackground(RAYWHITE);
+        ClearBackground(DARKBROWN);
 
         m_currentScene->Update(deltaTime);
 

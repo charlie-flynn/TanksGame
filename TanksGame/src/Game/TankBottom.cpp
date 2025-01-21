@@ -2,6 +2,8 @@
 #include "raylib.h"
 #include "Engine/Transform2D.h"
 #include "Engine/SquareCollider.h"
+#include "Engine/Game.h"
+#include "WinScene.h"
 #include "TankCannon.h"
 #include "TankTreads.h"
 #include <string>
@@ -33,6 +35,9 @@ void TankBottom::Update(double deltaTime)
 			IsKeyDown(KEY_S) - IsKeyDown(KEY_W)).getNormalized() * m_speed * deltaTime);
 	}
 
+	if (IsKeyPressed(KEY_SPACE))
+		Game::SetCurrentScene(new WinScene());
+
 	// draw tank bottom
 	DrawRectangleV(Vector2() = { GetTransform()->GetGlobalPosition().x, GetTransform()->GetGlobalPosition().y },
 		Vector2() = { GetTransform()->GetGlobalScale().x * 50, GetTransform()->GetGlobalScale().y * 50 }, DARKGREEN);
@@ -44,7 +49,11 @@ void TankBottom::Update(double deltaTime)
 void TankBottom::OnCollision()
 {
 	if (GetCollider()->GetCollidedActor()->GetName() == "Gem")
+	{
 		m_gems++;
+		if (m_gems >= 3)
+			Game::SetCurrentScene(new WinScene());
+	}
 	else if (GetCollider()->GetCollidedActor()->GetName() == "Tile")
 		GetTransform()->Translate((GetCollider()->GetCollidedActor()->GetTransform()->GetGlobalPosition() - GetTransform()->GetGlobalPosition()).getNormalized() * -2);
 }

@@ -11,7 +11,7 @@ public:
 	void RemoveScene(Scene* scene);
 	void AddScene(Scene* scene);
 	static Scene* GetCurrentScene() { return m_currentScene; };
-	void SetCurrentScene(Scene* scene);
+	static void SetCurrentScene(Scene* scene);
 	void Run();
 private:
 	DynamicArray<Scene*> m_scenes;

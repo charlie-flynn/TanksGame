@@ -4,7 +4,7 @@
 
 Tile::Tile() : Actor("Tile")
 {
-	AddComponent<SquareCollider>(m_collider = new SquareCollider(new Vec2(50, 50), this));
+	AddComponent<SquareCollider>(m_collider = new SquareCollider(new Vec2(51, 51), this));
 	m_health = 3;
 }
 

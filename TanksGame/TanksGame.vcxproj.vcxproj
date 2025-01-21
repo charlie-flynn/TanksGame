@@ -158,6 +158,7 @@
     <ClCompile Include="src\Game\TankCannon.cpp" />
     <ClCompile Include="src\Game\TankTreads.cpp" />
     <ClCompile Include="src\Game\Tile.cpp" />
+    <ClCompile Include="src\Game\WinScene.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>

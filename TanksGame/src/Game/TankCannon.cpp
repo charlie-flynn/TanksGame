@@ -12,7 +12,7 @@ void TankCannon::Update(double deltaTime)
 		if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
 		{
 			Actor::Instantiate(new Bullet(), nullptr, GetTransform()->GetGlobalPosition(), GetTransform()->GetGlobalRotationAngle());
-			m_fireRate = 0.5;
+			m_fireRate = 0.1;
 		}
 	}
 	else

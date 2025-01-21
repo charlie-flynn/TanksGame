@@ -9,13 +9,7 @@
 
 LandscapeScene::LandscapeScene()
 {
-	static const int ROWS = 20;
-	static const int COLS = 20;
 
-	int m_tiles[ROWS * COLS];
-
-	int m_tileWdith = 80;
-	int m_tileHeight = 50;
 }
 
 LandscapeScene::~LandscapeScene()
@@ -36,9 +30,53 @@ void LandscapeScene::Start()
 {
 	Actor::Instantiate(new TankBottom(), nullptr, Vec2(30, 30), 0);
 
-	Actor::Instantiate(new Gem(), nullptr, Vec2(200, 200), 0);
+	const int rows = 16;
+	const int columns = 16;
 
-	Actor::Instantiate(new Tile(), nullptr, Vec2(200, 200), 0);
+	{
+		Vec2 gemPosition1 = Vec2();
+		Vec2 gemPosition2 = Vec2();
+		Vec2 gemPosition3 = Vec2();
+
+		do
+		{
+			do
+			{
+				gemPosition1 = Vec2(GetRandomValue(0, 16), GetRandomValue(0, 16));
+			} while (gemPosition1.x <= 1 || gemPosition1.y <= 1);
+
+			do
+			{
+				gemPosition2 = Vec2(GetRandomValue(0, 16), GetRandomValue(0, 16));
+			} while (gemPosition2.x <= 1 || gemPosition2.y <= 1);
+
+			do
+			{
+				gemPosition3 = Vec2(GetRandomValue(0, 16), GetRandomValue(0, 16));
+			} while (gemPosition3.x <= 1 || gemPosition3.y <= 1);
+		} while (gemPosition1 == gemPosition2 || gemPosition2 == gemPosition3 || gemPosition3 == gemPosition1);
+
+		std::cout << gemPosition1.x << ", " << gemPosition1.y << std::endl;
+		std::cout << gemPosition2.x << ", " << gemPosition2.y << std::endl;
+		std::cout << gemPosition3.x << ", " << gemPosition3.y << std::endl;
+
+		Actor::Instantiate(new Gem(), nullptr, gemPosition1 * 50, 0);
+		Actor::Instantiate(new Gem(), nullptr, gemPosition2 * 50, 0);
+		Actor::Instantiate(new Gem(), nullptr, gemPosition3 * 50, 0);
+	}
+
+
+	for (int x = 0; x < rows; x++)
+	{
+		for (int y = 0; y < columns; y++)
+		{
+			Vec2 position = Vec2(50 * x, 50 * y);
+
+			if (x != 0 && x != 1  || y != 0 && y != 1)
+				Actor::Instantiate(new Tile(), nullptr, position, 0);
+		}
+	}
+
 
 	std::cout << "ACK" << std::endl;
 }

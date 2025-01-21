@@ -12,7 +12,7 @@ Bullet::Bullet() : Actor("Bullet")
 void Bullet::Update(double deltaTime)
 {
 	// move
-	GetTransform()->Translate(GetTransform()->GetForwardVector() * 100 * deltaTime);
+	GetTransform()->Translate(GetTransform()->GetForwardVector() * 150 * deltaTime);
 
 	// draw
 	Rectangle rectangle = Rectangle();

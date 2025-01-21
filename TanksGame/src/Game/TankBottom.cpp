@@ -28,8 +28,10 @@ void TankBottom::Update(double deltaTime)
 	// check for input
 	// if there is input, move the player accounting for the speed value and deltaTime
 	if (IsKeyDown(KEY_D) || IsKeyDown(KEY_A) || IsKeyDown(KEY_S) || IsKeyDown(KEY_W))
+	{
 		GetTransform()->Translate(Vec2(IsKeyDown(KEY_D) - IsKeyDown(KEY_A), 
 			IsKeyDown(KEY_S) - IsKeyDown(KEY_W)).getNormalized() * m_speed * deltaTime);
+	}
 
 	// draw tank bottom
 	DrawRectangleV(Vector2() = { GetTransform()->GetGlobalPosition().x, GetTransform()->GetGlobalPosition().y },
@@ -44,5 +46,5 @@ void TankBottom::OnCollision()
 	if (GetCollider()->GetCollidedActor()->GetName() == "Gem")
 		m_gems++;
 	else if (GetCollider()->GetCollidedActor()->GetName() == "Tile")
-		GetTransform()->Translate((GetCollider()->GetCollidedActor()->GetTransform()->GetGlobalPosition() - GetTransform()->GetGlobalPosition()).getNormalized() * -1);
+		GetTransform()->Translate((GetCollider()->GetCollidedActor()->GetTransform()->GetGlobalPosition() - GetTransform()->GetGlobalPosition()).getNormalized() * -2);
 }

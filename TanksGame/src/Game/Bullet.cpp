@@ -23,3 +23,9 @@ void Bullet::Update(double deltaTime)
 
 	DrawRectanglePro(rectangle, { 0, 0 }, -GetTransform()->GetGlobalRotationAngle() * (180 / PI), RED);
 }
+
+void Bullet::OnCollision()
+{
+	if (GetCollider()->GetCollidedActor()->GetName() == "Tile")
+		Destroy(this);
+}

@@ -46,9 +46,6 @@ void Actor::Destroy(Actor* actor)
 
 	// remove from current scene
 	Game::GetCurrentScene()->RemoveActor(this);
-
-	// probly delete it too
-	delete this;
 }
 
 void Actor::Start()

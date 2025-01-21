@@ -2,15 +2,15 @@
 #include "Engine/Actor.h"
 #include "Engine/SquareCollider.h"
 
-class Bullet : public Actor
+
+class Tile : public Actor
 {
 public:
-	Bullet();
+	Tile();
 	void Update(double deltaTime) override;
 	void OnCollision() override;
-	SquareCollider* GetCollider() { return m_collider; };
-
+	Collider* GetCollider() override { return (Collider*)m_collider; };
 private:
-	Vec2 m_direction;
+	int m_health;
 	SquareCollider* m_collider;
 };

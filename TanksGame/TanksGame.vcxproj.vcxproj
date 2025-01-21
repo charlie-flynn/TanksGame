@@ -157,6 +157,7 @@
     <ClCompile Include="src\Game\TankBottom.cpp" />
     <ClCompile Include="src\Game\TankCannon.cpp" />
     <ClCompile Include="src\Game\TankTreads.cpp" />
+    <ClCompile Include="src\Game\Tile.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -179,6 +180,7 @@
     <ClInclude Include="src\Game\TankBottom.h" />
     <ClInclude Include="src\Game\TankCannon.h" />
     <ClInclude Include="src\Game\TankTreads.h" />
+    <ClInclude Include="src\Game\Tile.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

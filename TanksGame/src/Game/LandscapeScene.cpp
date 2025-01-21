@@ -3,6 +3,7 @@
 #include "TankBottom.h"
 #include "Engine/Transform2D.h"
 #include "Gem.h"
+#include "Tile.h"
 
 #include <iostream>
 
@@ -36,6 +37,8 @@ void LandscapeScene::Start()
 	Actor::Instantiate(new TankBottom(), nullptr, Vec2(30, 30), 0);
 
 	Actor::Instantiate(new Gem(), nullptr, Vec2(200, 200), 0);
+
+	Actor::Instantiate(new Tile(), nullptr, Vec2(200, 200), 0);
 
 	std::cout << "ACK" << std::endl;
 }

@@ -6,6 +6,7 @@ class Gem : public Actor
 {
 public:
 	Gem();
+	~Gem();
 	void Update(double deltaTime) override;
 	void OnCollision() override;
 	Collider* GetCollider() override { return (Collider*)m_collider; }

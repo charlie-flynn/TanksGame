@@ -34,6 +34,7 @@ bool SquareCollider::CheckCollisionSquare(SquareCollider* other)
         otherOwnerPosition.y + otherDimensions.y > ownerPosition.y)
     {
         SetCollidedActor(other->GetOwner());
+        other->SetCollidedActor(GetOwner());
         return true;
     }
         

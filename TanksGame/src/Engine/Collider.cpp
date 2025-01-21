@@ -18,10 +18,10 @@ bool Collider::CheckCollision(Actor* other)
         return false;
 
     if (this->isCircle && other->GetCollider()->isCircle)
-        CheckCollisionCircle((CircleCollider*)other->GetCollider());
+        return CheckCollisionCircle((CircleCollider*)other->GetCollider());
 
     if (this->isSquare && other->GetCollider()->isSquare)
-        CheckCollisionSquare((SquareCollider*)other->GetCollider());
+        return CheckCollisionSquare((SquareCollider*)other->GetCollider());
 
 
     return false;

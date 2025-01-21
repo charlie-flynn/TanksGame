@@ -9,6 +9,7 @@ class Scene
 private:
 
 	 DynamicArray<Actor*> m_actors;
+	 DynamicArray<Actor*> m_toBeRemoved;
 
 public:
 	Scene();

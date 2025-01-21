@@ -9,6 +9,7 @@
 Scene::Scene()
 {
 	m_actors = DynamicArray<Actor*>();
+	m_toBeRemoved = DynamicArray<Actor*>();
 }
 	
 
@@ -33,6 +34,13 @@ void Scene::Update(double deltaTime)
 		}
 		m_actors[i]->Update(deltaTime);
 	}
+
+	for (int i = 0; i < m_toBeRemoved.Length(); i++)
+	{
+		m_actors.Remove(m_toBeRemoved[i]);
+	}
+
+	m_toBeRemoved.Clear();
 
 	// check for collision
 
@@ -68,7 +76,6 @@ void Scene::AddActor(Actor* actor)
 
 void Scene::RemoveActor(Actor* actor)
 {
-	m_actors.Remove(actor);
-	return;
+	m_toBeRemoved.Add(actor);
 }
 

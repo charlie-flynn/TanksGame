@@ -4,7 +4,7 @@
 #include "Engine/SquareCollider.h"
 #include "Engine/SquareCollider.h"
 
-TankBottom::TankBottom()
+TankBottom::TankBottom() : Actor("Tank")
 {
 	m_speed = 50.0f;
 	AddComponent<SquareCollider>(m_collider = new SquareCollider(new Vec2(48, 48), this));
@@ -14,9 +14,9 @@ void TankBottom::Update(double deltaTime)
 {
 	// check for input
 	// if there is input, move the player accounting for the speed value and deltaTime
-	if (IsKeyDown(KEY_LEFT) || IsKeyDown(KEY_RIGHT) || IsKeyDown(KEY_UP) || IsKeyDown(KEY_DOWN))
-		GetTransform()->Translate(Vec2(IsKeyDown(KEY_RIGHT) - IsKeyDown(KEY_LEFT), 
-			IsKeyDown(KEY_DOWN) - IsKeyDown(KEY_UP)).getNormalized() * m_speed * deltaTime);
+	if (IsKeyDown(KEY_D) || IsKeyDown(KEY_A) || IsKeyDown(KEY_S) || IsKeyDown(KEY_W))
+		GetTransform()->Translate(Vec2(IsKeyDown(KEY_D) - IsKeyDown(KEY_A), 
+			IsKeyDown(KEY_S) - IsKeyDown(KEY_W)).getNormalized() * m_speed * deltaTime);
 
 	// draw tank bottom
 	DrawRectangleV(Vector2() = { GetTransform()->GetGlobalPosition().x, GetTransform()->GetGlobalPosition().y },

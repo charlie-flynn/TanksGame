@@ -22,7 +22,10 @@ bool SquareCollider::CheckCollisionSquare(SquareCollider* other)
         otherOwnerPosition.x + otherDimensions.x > ownerPosition.x &&
         otherOwnerPosition.y < ownerPosition.y + m_colliderScale->y &&
         otherOwnerPosition.y + otherDimensions.y > ownerPosition.y)
+    {
+        SetCollidedActor(other->GetOwner());
         return true;
+    }
         
     return false;
 }

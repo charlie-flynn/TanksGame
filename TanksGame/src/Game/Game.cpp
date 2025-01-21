@@ -1,21 +1,68 @@
 #include "Game.h"
-#include "Engine/Actor.h"
-#include "Game/TankBottom.h"
-#include "Game/TankTreads.h"
-#include "Game/Button.h"
-#include "Engine/TestActor.h"
-#include "Engine/SquareCollider.h"
+#include "Engine/Scene.h"
 
 #include <iostream>
 #include <raylib.h>
 
-void Game::Run()
+Game::Game()
 {
-	Start();
-    Update();
-	End();
+    m_scenes = DynamicArray<Scene*>();
+    m_currentScene = new Scene();
 }
 
+Scene* Game::GetScene(int index)
+{
+    return m_scenes[index];
+}
+
+void Game::RemoveScene(Scene* scene)
+{
+    m_scenes.Remove(scene);
+}
+
+void Game::AddScene(Scene* scene)
+{
+    m_scenes.AddUnique(scene);
+}
+
+void Game::SetCurrentScene(Scene* scene)
+{
+    if (m_currentScene != nullptr)
+        m_currentScene->End();
+    m_currentScene = scene;
+    m_currentScene->Start();
+}
+
+void Game::Run()
+{
+    InitWindow(800, 800, "Tank Game");
+    SetTargetFPS(60);
+    double deltaTime = 1;
+    double currentTime = 0;
+    double lastTime = 0;
+
+    while (!WindowShouldClose())
+    {
+        currentTime = GetTime() / 1000.0;
+
+        BeginDrawing();
+        ClearBackground(RAYWHITE);
+
+        m_currentScene->Update(deltaTime);
+
+        EndDrawing();
+
+        deltaTime = (currentTime - lastTime) / 1000.0;
+        lastTime = currentTime;
+    }
+
+    m_currentScene->End();
+
+    CloseWindow();
+}
+
+// DEPRECATED CODE - dont need it anymore
+/*
 void Game::Start()
 {
     InitWindow(GetMonitorWidth(0), GetMonitorHeight(0), "raylib [core] example - basic window");
@@ -25,15 +72,19 @@ void Game::Start()
 
 void Game::Update()
 {
+    TankCannon tankCannon = TankCannon();
     TankBottom tankBottom = TankBottom();
     TankTreads tankTreads = TankTreads();
     Button testButton = Button(Vec2(120, 30), (char*)"Test Button", 11, *TestFunction);
     TestActor testCollisionActor = TestActor();
+    Gem testGem = Gem();
 
     Actor::Instantiate(&tankBottom, nullptr, Vec2(39, 39), 0);
     Actor::Instantiate(&tankTreads, tankBottom.GetTransform(), Vec2(25, 25), 0);
+    Actor::Instantiate(&tankCannon, tankBottom.GetTransform(), Vec2(25, 25), 0);
     Actor::Instantiate(&testButton, nullptr, Vec2(50, 50), 0);
     Actor::Instantiate(&testCollisionActor, nullptr, Vec2(120, 200), 0);
+    Actor::Instantiate(&testGem, nullptr, Vec2(300, 300), 0);
 
     while (!WindowShouldClose())
     {
@@ -43,11 +94,16 @@ void Game::Update()
 
         tankTreads.Update(0.0024);
         tankBottom.Update(0.0024);
+        tankCannon.Update(0.0024);
         testButton.Update(0.0024);
         testCollisionActor.Update(0.024);
+        testGem.Update(0.024);
 
         if (testCollisionActor.GetCollider()->CheckCollisionSquare((SquareCollider*)tankBottom.GetCollider()))
             std::cout << "COLISION" << std::endl;
+
+        if (testGem.GetCollider()->CheckCollisionSquare((SquareCollider*)tankBottom.GetCollider()))
+            testGem.OnCollision(testGem.GetCollider()->GetCollidedActor());
 
         EndDrawing();
     }
@@ -63,3 +119,4 @@ void Game::TestFunction()
 {
     std::cout << "Button Clicked!" << std::endl;
 }
+*/

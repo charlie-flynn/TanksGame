@@ -11,7 +11,7 @@ class Collider;
 class Actor 
 {
 public:
-	Actor();
+	Actor(char const* name = "Actor");
 public:
 	~Actor();
 	static Actor* Instantiate(Actor* actor, Transform2D* transform, const Vec2 position, const float rotation);
@@ -25,13 +25,7 @@ public:
 	void SetEnabled(const bool value);
 	Transform2D* GetTransform();
 	virtual Collider* GetCollider() { return nullptr; };
-	// commenting out the component functions to do later
-	/*
-	AddComponent
-	RemoveComponent
-	GetComponent
-	GetComponents
-	*/
+	char const* GetName() { return m_name; };
 
 	template <typename T>
 	T* AddComponent(T* component);
@@ -52,6 +46,7 @@ public:
 
 private:
 	Transform2D* m_transform;
+	const char* m_name;
 
 	bool m_started;
 	bool m_enabled;

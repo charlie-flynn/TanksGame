@@ -33,10 +33,19 @@ void TankBottom::Update(double deltaTime)
 	{
 		GetTransform()->Translate(Vec2(IsKeyDown(KEY_D) - IsKeyDown(KEY_A), 
 			IsKeyDown(KEY_S) - IsKeyDown(KEY_W)).getNormalized() * m_speed * deltaTime);
-	}
 
-	if (IsKeyPressed(KEY_SPACE))
-		Game::SetCurrentScene(new WinScene());
+		if (GetTransform()->GetGlobalPosition().x > GetScreenWidth())
+			GetTransform()->Translate(Vec2(-2, 0));
+
+		if (GetTransform()->GetGlobalPosition().x < 0)
+			GetTransform()->Translate(Vec2(2, 0));
+
+		if (GetTransform()->GetGlobalPosition().y > GetScreenHeight())
+			GetTransform()->Translate(Vec2(0, -2));
+
+		if (GetTransform()->GetGlobalPosition().y < 0)
+			GetTransform()->Translate(Vec2(0, 2));
+	}
 
 	// draw tank bottom
 	DrawRectangleV(Vector2() = { GetTransform()->GetGlobalPosition().x, GetTransform()->GetGlobalPosition().y },

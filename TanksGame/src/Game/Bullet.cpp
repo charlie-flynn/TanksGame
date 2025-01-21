@@ -14,6 +14,13 @@ void Bullet::Update(double deltaTime)
 	// move
 	GetTransform()->Translate(GetTransform()->GetForwardVector() * 150 * deltaTime);
 
+	// destroy if off screen
+	if (GetTransform()->GetGlobalPosition().x > GetScreenWidth() ||
+		GetTransform()->GetGlobalPosition().x < 0 ||
+		GetTransform()->GetGlobalPosition().y > GetScreenHeight() ||
+		GetTransform()->GetGlobalPosition().y < 0)
+		Destroy(this);
+
 	// draw
 	Rectangle rectangle = Rectangle();
 	rectangle.x = GetTransform()->GetGlobalPosition().x;

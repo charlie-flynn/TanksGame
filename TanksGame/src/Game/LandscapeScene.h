@@ -2,7 +2,7 @@
 #include "Engine/Scene.h"
 #include "raylib.h"
 
-class LandscapeScene
+class LandscapeScene : public Scene
 {
 public:
 	LandscapeScene();
@@ -10,6 +10,11 @@ public:
 
 private:
 	void LoadRandomizer();
-	void Update(float deltatime);
+	Color GetTileColor(int tileValue);
+	virtual void Start();
+	virtual void Update(float deltatime);
+	virtual void End();
+
+
 
 };

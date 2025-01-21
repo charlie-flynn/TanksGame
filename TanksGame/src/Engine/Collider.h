@@ -7,6 +7,9 @@ class SquareCollider;
 class Collider : public Component
 {
 public:
+	bool isSquare;
+	bool isCircle;
+
 	Collider(Actor* owner = nullptr) : Component(owner) { m_collidedActor = nullptr; };
 	~Collider();
 	Actor* GetCollidedActor() { return m_collidedActor; };

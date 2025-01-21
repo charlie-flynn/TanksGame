@@ -2,6 +2,7 @@
 #include "LandscapeScene.h"
 #include "TankBottom.h"
 #include "Engine/Transform2D.h"
+#include "Gem.h"
 
 #include <iostream>
 
@@ -33,6 +34,9 @@ Color LandscapeScene::GetTileColor(int tileValue)
 void LandscapeScene::Start()
 {
 	Actor::Instantiate(new TankBottom(), nullptr, Vec2(30, 30), 0);
+
+	Actor::Instantiate(new Gem(), nullptr, Vec2(200, 200), 0);
+
 	std::cout << "ACK" << std::endl;
 }
 

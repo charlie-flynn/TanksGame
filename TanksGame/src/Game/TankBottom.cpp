@@ -8,6 +8,7 @@
 TankBottom::TankBottom() : Actor("Tank")
 {
 	m_speed = 100.0f;
+	m_gems = 0;
 
 	Actor::Instantiate(new TankTreads(), this->GetTransform(), Vec2(25, 25), 0);
 	Actor::Instantiate(new TankCannon(), this->GetTransform(), Vec2(25, 25), 0);
@@ -26,5 +27,11 @@ void TankBottom::Update(double deltaTime)
 	DrawRectangleV(Vector2() = { GetTransform()->GetGlobalPosition().x, GetTransform()->GetGlobalPosition().y },
 		Vector2() = { GetTransform()->GetGlobalScale().x * 50, GetTransform()->GetGlobalScale().y * 50 }, DARKGREEN);
 
-	m_collider->Draw();
+	// draw gem counter
+}
+
+void TankBottom::OnCollision()
+{
+	if (GetCollider()->GetCollidedActor()->GetName() == "Gem")
+		m_gems++;
 }

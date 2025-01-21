@@ -45,8 +45,10 @@ void Actor::Destroy(Actor* actor)
 		m_transform->GetParent()->RemoveChild(this->GetTransform());
 
 	// remove from current scene
+	Game::GetCurrentScene()->RemoveActor(this);
 
-	// probly delete it and set it to nullptr too
+	// probly delete it too
+	delete this;
 }
 
 void Actor::Start()

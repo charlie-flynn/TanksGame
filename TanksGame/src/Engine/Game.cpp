@@ -45,8 +45,6 @@ void Game::Run()
 
     while (!WindowShouldClose())
     {
-
-
         BeginDrawing();
         ClearBackground(RAYWHITE);
 

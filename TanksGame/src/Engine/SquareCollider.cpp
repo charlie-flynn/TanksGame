@@ -3,6 +3,16 @@
 #include "Transform2D.h"
 #include "raylib.h"
 
+SquareCollider::SquareCollider()
+{
+    isSquare = true;
+}
+
+SquareCollider::~SquareCollider()
+{
+    delete m_colliderScale;
+}
+
 void SquareCollider::Draw()
 {
 

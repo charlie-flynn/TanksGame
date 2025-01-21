@@ -13,9 +13,9 @@ void Gem::Update(double deltaTime)
 	DrawPoly({ GetTransform()->GetGlobalPosition().x, GetTransform()->GetGlobalPosition().y }, 4, 15, 0, SKYBLUE);
 }
 
-void Gem::OnCollision(Actor* collidedActor)
+void Gem::OnCollision()
 {
-	if (collidedActor->GetName() == "Tank")
+	if (GetCollider()->GetCollidedActor()->GetName() == "Tank")
 	{
 		Destroy(this);
 	}

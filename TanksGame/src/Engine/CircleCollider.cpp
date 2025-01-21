@@ -8,6 +8,7 @@
 CircleCollider::CircleCollider(Actor* owner, float radius) : Collider(owner)
 {
     SetCollisionRadius(radius);
+    isCircle = true;
 }
 
 void CircleCollider::Draw()
@@ -23,6 +24,7 @@ bool CircleCollider::CheckCollisionCircle(CircleCollider* other)
     if (sumRadii >= distance)
     {
         SetCollidedActor(other->GetOwner());
+        other->SetCollidedActor(GetOwner());
         return true;
     }
     else

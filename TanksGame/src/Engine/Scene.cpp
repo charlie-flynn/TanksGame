@@ -1,5 +1,6 @@
 #include "Scene.h"
 #include "Actor.h"
+#include "Collider.h"
 #include "DynamicArray.h"
 #include <string>
 
@@ -31,6 +32,24 @@ void Scene::Update(double deltaTime)
 			m_actors[i]->Start();
 		}
 		m_actors[i]->Update(deltaTime);
+	}
+
+	// check for collision
+
+	for (int row = 0; row < m_actors.Length(); row++)
+	{
+		for (int column = 0; column < m_actors.Length(); column++)
+		{
+			if (row == column)
+				continue;
+
+			if (m_actors[row]->GetCollider() != nullptr && m_actors[column]->GetCollider() != nullptr)
+				if (m_actors[row]->GetCollider()->CheckCollision(m_actors[column]))
+				{
+					m_actors[row]->OnCollision();
+					m_actors[column]->OnCollision();
+				}
+		}
 	}
 }
 

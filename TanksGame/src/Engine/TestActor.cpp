@@ -33,7 +33,7 @@ void TestActor::End()
 {
 }
 
-void TestActor::OnCollision(Actor* other)
+void TestActor::OnCollision()
 {
 	DrawRectangleV({ 30, 30 }, { 30, 30 }, GREEN);
 }

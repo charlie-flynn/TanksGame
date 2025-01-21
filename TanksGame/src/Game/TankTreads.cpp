@@ -45,18 +45,18 @@ void TankTreads::RotateToDirection(Vec2 direction)
 	if (Vec2(direction.x * -1, direction.y * -1) == absoluteDirection)
 	{
 		float forwardAbsDirectionAngle = Vec2::findAngle(forward, absoluteDirection);
-		if (forwardAbsDirectionAngle > 0)
-			GetTransform()->Rotate(0.0050f);
-		else
-			GetTransform()->Rotate(-0.0050f);
+		if (forwardAbsDirectionAngle > 0.2f)
+			GetTransform()->Rotate(0.20f);
+		else if (forwardAbsDirectionAngle < -0.2f)
+			GetTransform()->Rotate(-0.20f);
 	}
 	else
 	{
-		float fowardDirectionAngle = Vec2::findAngle(forward, direction);
-		if (fowardDirectionAngle > 0)
-			GetTransform()->Rotate(0.0050f);
-		else
-			GetTransform()->Rotate(-0.0050f);
+		float forwardDirectionAngle = Vec2::findAngle(forward, direction);
+		if (forwardDirectionAngle > 0.2f)
+			GetTransform()->Rotate(0.10f);
+		else if (forwardDirectionAngle < -0.2f)
+			GetTransform()->Rotate(-0.10f);
 	}
 
 }

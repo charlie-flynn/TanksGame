@@ -3,6 +3,16 @@
 #include "Transform2D.h"
 #include "raylib.h"
 
+SquareCollider::SquareCollider()
+{
+    isSquare = true;
+}
+
+SquareCollider::~SquareCollider()
+{
+    delete m_colliderScale;
+}
+
 void SquareCollider::Draw()
 {
 
@@ -24,6 +34,7 @@ bool SquareCollider::CheckCollisionSquare(SquareCollider* other)
         otherOwnerPosition.y + otherDimensions.y > ownerPosition.y)
     {
         SetCollidedActor(other->GetOwner());
+        other->SetCollidedActor(GetOwner());
         return true;
     }
         

@@ -1,7 +1,6 @@
 #pragma once
 #include "Engine/DynamicArray.h"
-
-class Scene;
+#include "Scene.h"
 
 class Game
 {
@@ -11,12 +10,12 @@ public:
 	Scene* GetScene(int index);
 	void RemoveScene(Scene* scene);
 	void AddScene(Scene* scene);
-	Scene* GetCurrentScene() { return m_currentScene; };
-	void SetCurrentScene(Scene* scene);
+	static Scene* GetCurrentScene() { return m_currentScene; };
+	static void SetCurrentScene(Scene* scene);
 	void Run();
 private:
 	DynamicArray<Scene*> m_scenes;
-	Scene* m_currentScene;
+	static Scene* m_currentScene;
 
 	// DEPRECATED CODE
 	/*
@@ -26,3 +25,4 @@ private:
 	static void TestFunction();
 	*/
 };
+

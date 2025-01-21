@@ -7,13 +7,13 @@ class LandscapeScene : public Scene
 public:
 	LandscapeScene();
 	~LandscapeScene();
+	 void Start() override;
+	void Update(double deltatime) override;
+	void End() override;
 
 private:
 	void LoadRandomizer();
 	Color GetTileColor(int tileValue);
-	virtual void Start();
-	virtual void Update(float deltatime);
-	virtual void End();
 
 
 

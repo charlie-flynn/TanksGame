@@ -3,7 +3,7 @@
 #include "../engine/Transform2D.h"
 #include <raylib.h>
 
-Button::Button(Vec2 scale, char* text, int textLength, void(*clickEvent)()) : Actor()
+Button::Button(Vec2 scale, char* text, int textLength, void (*clickEvent)()) : Actor()
 {
 	AddComponent<IsClickable>()->SetOnClickEvent(clickEvent);
 	GetTransform()->SetLocalScale(scale);
@@ -33,7 +33,7 @@ void Button::Update(double deltaTime)
 		RED);
 
 	if (text != nullptr)
-		DrawTextPro(Font(), text, { (buttonScale.x / 2) - textLength * 2.52f, buttonScale.y / 3}, {-buttonPosition.x, -buttonPosition.y}, 0, buttonScale.y / 3, 1, {0, 0, 0, 255});
+		DrawTextPro(Font(), text, { (buttonScale.x / textLength) * 2.52f, buttonScale.y / 3}, {-buttonPosition.x, -buttonPosition.y}, 0, buttonScale.y / 3, 1, {0, 0, 0, 255});
 
 	// if the mouse is colliding with the button, make it look darker
 	if (mousePosition.x < buttonPosition.x + buttonScale.x &&

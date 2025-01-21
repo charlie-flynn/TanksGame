@@ -6,9 +6,10 @@ class Gem : public Actor
 {
 public:
 	Gem();
+	~Gem();
 	void Update(double deltaTime) override;
-	void OnCollision(Actor* collidedActor) override;
-	SquareCollider* GetCollider() { return m_collider; }
+	void OnCollision() override;
+	Collider* GetCollider() override { return (Collider*)m_collider; }
 private:
 	SquareCollider* m_collider;
 };

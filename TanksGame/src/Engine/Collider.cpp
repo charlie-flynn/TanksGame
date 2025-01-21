@@ -1,5 +1,6 @@
 #include "Collider.h"
 #include "CircleCollider.h"
+#include "SquareCollider.h"
 #include "Actor.h"
 
 Collider::~Collider()
@@ -13,5 +14,15 @@ Collider::~Collider()
 
 bool Collider::CheckCollision(Actor* other)
 {
+    if (other->GetCollider() == nullptr)
+        return false;
+
+    if (this->isCircle && other->GetCollider()->isCircle)
+        return CheckCollisionCircle((CircleCollider*)other->GetCollider());
+
+    if (this->isSquare && other->GetCollider()->isSquare)
+        return CheckCollisionSquare((SquareCollider*)other->GetCollider());
+
+
     return false;
 }

@@ -13,7 +13,7 @@ public:
 	void Start() override;
 	void Update(double deltaTime) override;
 	void End() override;
-	void OnCollision(Actor* other) override;
+	void OnCollision() override;
 	Collider* GetCollider() override { return (Collider*)m_collider; };
 	
 	// commenting out the component functions to do later

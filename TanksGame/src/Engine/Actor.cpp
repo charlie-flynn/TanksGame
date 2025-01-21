@@ -1,6 +1,8 @@
 #include "Actor.h"
 #include "Transform2D.h"
 #include "Component.h"
+#include "Game.h"
+#include "Scene.h"
 
 Actor::Actor(char const* name)
 	: m_transform(new Transform2D(*this)), m_enabled(false), m_started(false), m_name(name)
@@ -24,7 +26,8 @@ Actor* Actor::Instantiate(Actor* actor, Transform2D* parent, const Vec2 position
 		parent->AddChild(actor->m_transform);
 
 	// add actor to current scene
-	
+	Game::GetCurrentScene()->AddActor(actor);
+
 	// return actor
 	return actor;
 }
@@ -42,8 +45,7 @@ void Actor::Destroy(Actor* actor)
 		m_transform->GetParent()->RemoveChild(this->GetTransform());
 
 	// remove from current scene
-
-	// probly delete it and set it to nullptr too
+	Game::GetCurrentScene()->RemoveActor(this);
 }
 
 void Actor::Start()

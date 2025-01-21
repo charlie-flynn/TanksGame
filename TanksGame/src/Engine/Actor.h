@@ -19,7 +19,7 @@ public:
 	void virtual Start();
 	void virtual Update(double deltaTime);
 	void virtual End() {};
-	void virtual OnCollision(Actor* other) {};
+	void virtual OnCollision() {};
 	bool GetStarted() { return m_started; };
 	bool GetEnabled() { return m_enabled; };
 	void SetEnabled(const bool value);

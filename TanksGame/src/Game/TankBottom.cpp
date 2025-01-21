@@ -2,11 +2,15 @@
 #include "raylib.h"
 #include "Engine/Transform2D.h"
 #include "Engine/SquareCollider.h"
-#include "Engine/SquareCollider.h"
+#include "TankCannon.h"
+#include "TankTreads.h"
 
 TankBottom::TankBottom() : Actor("Tank")
 {
-	m_speed = 50.0f;
+	m_speed = 100.0f;
+
+	Actor::Instantiate(new TankTreads(), this->GetTransform(), Vec2(25, 25), 0);
+	Actor::Instantiate(new TankCannon(), this->GetTransform(), Vec2(25, 25), 0);
 	AddComponent<SquareCollider>(m_collider = new SquareCollider(new Vec2(48, 48), this));
 }
 

@@ -5,7 +5,7 @@
 class Bullet : public Actor
 {
 public:
-	Bullet(Vec2 direction = Vec2(0, 1));
+	Bullet();
 	void Update(double deltaTime) override;
 	SquareCollider* GetCollider() { return m_collider; };
 

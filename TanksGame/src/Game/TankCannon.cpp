@@ -2,7 +2,7 @@
 #include "Engine/Actor.h"
 #include "raylib.h"
 #include "Engine/Transform2D.h"
-#include <iostream>
+#include "Bullet.h"
 
 void TankCannon::Update(double deltaTime)
 {
@@ -11,7 +11,7 @@ void TankCannon::Update(double deltaTime)
 	{
 		if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
 		{
-			std::cout << "Pew!" << std::endl; // replace this line with shooting a projectile later
+			Actor::Instantiate(new Bullet(), nullptr, GetTransform()->GetGlobalPosition(), GetTransform()->GetGlobalRotationAngle());
 			m_fireRate = 0.5;
 		}
 	}
@@ -24,10 +24,10 @@ void TankCannon::Update(double deltaTime)
 	Vec2 mousePosition = Vec2(GetMousePosition().x, GetMousePosition().y);
 	Vec2 directionToMouseFromCannon = (mousePosition - GetTransform()->GetGlobalPosition()).getNormalized();
 
-	if (Vec2::findAngle(GetTransform()->GetForwardVector(), directionToMouseFromCannon) < 0)
-		GetTransform()->Rotate(0.0025f);
-	else
-		GetTransform()->Rotate(-0.0025f);
+	if (Vec2::findAngle(GetTransform()->GetForwardVector(), directionToMouseFromCannon) < -0.2)
+		GetTransform()->Rotate(0.20f);
+	else if (Vec2::findAngle(GetTransform()->GetForwardVector(), directionToMouseFromCannon) > 0.2)
+		GetTransform()->Rotate(-0.20f);
 
 	// drawing code
 	Rectangle rec = Rectangle();

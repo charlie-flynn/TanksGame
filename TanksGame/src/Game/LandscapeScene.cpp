@@ -1,5 +1,9 @@
 #include "Engine/Scene.h"
 #include "LandscapeScene.h"
+#include "TankBottom.h"
+#include "Engine/Transform2D.h"
+
+#include <iostream>
 
 LandscapeScene::LandscapeScene()
 {
@@ -15,6 +19,31 @@ LandscapeScene::LandscapeScene()
 LandscapeScene::~LandscapeScene()
 {
 
+}
+
+void LandscapeScene::LoadRandomizer()
+{
+}
+
+Color LandscapeScene::GetTileColor(int tileValue)
+{
+	return Color();
+}
+
+void LandscapeScene::Start()
+{
+	Actor::Instantiate(new TankBottom(), nullptr, Vec2(30, 30), 0);
+	std::cout << "ACK" << std::endl;
+}
+
+void LandscapeScene::Update(double deltatime)
+{
+	Scene::Update(deltatime);
+
+}
+
+void LandscapeScene::End()
+{
 }
 
 //LandscapeScene::LoadRandomizer(unsigned int seed)

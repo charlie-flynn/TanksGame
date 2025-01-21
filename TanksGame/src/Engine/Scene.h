@@ -13,7 +13,7 @@ private:
 public:
 	Scene();
 	~Scene();
-	void AddActor(Actor& actor);
+	void AddActor(Actor* actor);
 	void RemoveActor(Actor* actor);
 	virtual void Start();
 	virtual void Update(double deltatime);

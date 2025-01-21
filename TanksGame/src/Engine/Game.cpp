@@ -1,13 +1,16 @@
 #include "Game.h"
 #include "Engine/Scene.h"
+#include "Game/LandscapeScene.h"
 
+#include <chrono>
 #include <iostream>
 #include <raylib.h>
 
+Scene* Game::m_currentScene = nullptr;
 Game::Game()
 {
     m_scenes = DynamicArray<Scene*>();
-    m_currentScene = new Scene();
+    m_currentScene = new LandscapeScene();
 }
 
 Scene* Game::GetScene(int index)
@@ -38,12 +41,11 @@ void Game::Run()
     InitWindow(800, 800, "Tank Game");
     SetTargetFPS(60);
     double deltaTime = 1;
-    double currentTime = 0;
-    double lastTime = 0;
+    SetCurrentScene(new LandscapeScene());
 
     while (!WindowShouldClose())
     {
-        currentTime = GetTime() / 1000.0;
+
 
         BeginDrawing();
         ClearBackground(RAYWHITE);
@@ -52,15 +54,13 @@ void Game::Run()
 
         EndDrawing();
 
-        deltaTime = (currentTime - lastTime) / 1000.0;
-        lastTime = currentTime;
+        deltaTime = GetFrameTime();
     }
 
     m_currentScene->End();
 
     CloseWindow();
 }
-
 // DEPRECATED CODE - dont need it anymore
 /*
 void Game::Start()

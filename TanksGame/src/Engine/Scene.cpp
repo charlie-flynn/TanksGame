@@ -14,7 +14,7 @@ Scene::Scene()
 
 Scene::~Scene()
 {
-
+	m_actors.Clear();
 }
 
 void Scene::Start()
@@ -30,6 +30,7 @@ void Scene::Update(double deltaTime)
 		{
 			m_actors[i]->Start();
 		}
+		m_actors[i]->Update(deltaTime);
 	}
 }
 
@@ -41,9 +42,9 @@ void Scene::End()
 	}
 }
 
-void Scene::AddActor(Actor& actor)
+void Scene::AddActor(Actor* actor)
 {
-	m_actors.AddUnique(&actor);	
+	m_actors.Add(actor);	
 }
 
 void Scene::RemoveActor(Actor* actor)

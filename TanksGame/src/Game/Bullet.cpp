@@ -4,23 +4,22 @@
 #include "Engine/SquareCollider.h"
 #include "raylib.h"
 
-Bullet::Bullet(Vec2 direction) : Actor("Bullet")
+Bullet::Bullet() : Actor("Bullet")
 {
-	m_direction = direction.getNormalized();
 	AddComponent<SquareCollider>(m_collider = new SquareCollider(new Vec2(10, 10), this));
 }
 
 void Bullet::Update(double deltaTime)
 {
 	// move
-	GetTransform()->Translate(m_direction * 20 * deltaTime);
+	GetTransform()->Translate(GetTransform()->GetForwardVector() * 100 * deltaTime);
 
 	// draw
 	Rectangle rectangle = Rectangle();
-	rectangle.x = 10 * GetTransform()->GetGlobalPosition().x;
-	rectangle.y = 10 * GetTransform()->GetGlobalPosition().y;
-	rectangle.width = GetTransform()->GetGlobalScale().x;
-	rectangle.height = GetTransform()->GetGlobalScale().y;
+	rectangle.x = GetTransform()->GetGlobalPosition().x;
+	rectangle.y = GetTransform()->GetGlobalPosition().y;
+	rectangle.width = 10 * GetTransform()->GetGlobalScale().x;
+	rectangle.height = 10 * GetTransform()->GetGlobalScale().y;
 
-	DrawRectanglePro(rectangle, { 0, 0 }, GetTransform()->GetGlobalRotationAngle() * (180 / PI), RED);
+	DrawRectanglePro(rectangle, { 0, 0 }, -GetTransform()->GetGlobalRotationAngle() * (180 / PI), RED);
 }

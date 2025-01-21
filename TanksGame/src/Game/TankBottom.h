@@ -8,6 +8,7 @@ class TankBottom : public Actor
 {
 public:
 	TankBottom();
+	~TankBottom();
 	void Update(double deltaTime) override;
 	float GetSpeed() { return m_speed; };
 	void OnCollision() override;

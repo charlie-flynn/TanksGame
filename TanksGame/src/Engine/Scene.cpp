@@ -54,7 +54,6 @@ void Scene::Update(double deltaTime)
 			if (m_actors[row]->GetCollider() != nullptr && m_actors[column]->GetCollider() != nullptr)
 				if (m_actors[row]->GetCollider()->CheckCollision(m_actors[column]))
 				{
-					m_actors[row]->OnCollision();
 					m_actors[column]->OnCollision();
 				}
 		}

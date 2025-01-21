@@ -4,6 +4,7 @@
 #include "Engine/SquareCollider.h"
 #include "TankCannon.h"
 #include "TankTreads.h"
+#include <string>
 
 TankBottom::TankBottom() : Actor("Tank")
 {
@@ -13,6 +14,13 @@ TankBottom::TankBottom() : Actor("Tank")
 	Actor::Instantiate(new TankTreads(), this->GetTransform(), Vec2(25, 25), 0);
 	Actor::Instantiate(new TankCannon(), this->GetTransform(), Vec2(25, 25), 0);
 	AddComponent<SquareCollider>(m_collider = new SquareCollider(new Vec2(48, 48), this));
+}
+
+TankBottom::~TankBottom()
+{
+	Actor::~Actor();
+	delete m_collider;
+	m_collider = nullptr;
 }
 
 void TankBottom::Update(double deltaTime)
@@ -28,10 +36,13 @@ void TankBottom::Update(double deltaTime)
 		Vector2() = { GetTransform()->GetGlobalScale().x * 50, GetTransform()->GetGlobalScale().y * 50 }, DARKGREEN);
 
 	// draw gem counter
+	DrawText(std::to_string(m_gems).c_str(), 10, 10, 20, BLUE);
 }
 
 void TankBottom::OnCollision()
 {
 	if (GetCollider()->GetCollidedActor()->GetName() == "Gem")
 		m_gems++;
+	else if (GetCollider()->GetCollidedActor()->GetName() == "Tile")
+		GetTransform()->Translate((GetCollider()->GetCollidedActor()->GetTransform()->GetGlobalPosition() - GetTransform()->GetGlobalPosition()).getNormalized() * -1);
 }

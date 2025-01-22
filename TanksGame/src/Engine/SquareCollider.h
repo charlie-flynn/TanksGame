@@ -7,10 +7,9 @@ typedef MathLibrary::Vector2 Vec2;
 class SquareCollider : public Collider
 {
 public:
-	SquareCollider();
+	SquareCollider(Vec2* scale = new Vec2(10, 10), Actor* owner = nullptr, Vec2* offset = new Vec2(0, 0));
 	~SquareCollider();
 
-	SquareCollider(Vec2* scale = new Vec2(10, 10), Actor* owner = nullptr, Vec2* offset = new Vec2(0, 0)) : Collider(owner) { m_colliderScale = scale; m_colliderOffset = offset; isSquare = true; };
 	void Draw() override;
 	bool CheckCollisionSquare(SquareCollider* other) override;
 

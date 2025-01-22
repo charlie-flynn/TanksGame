@@ -3,15 +3,19 @@
 #include "Transform2D.h"
 #include "raylib.h"
 
-SquareCollider::SquareCollider()
+SquareCollider::SquareCollider(Vec2* scale, Actor* owner, Vec2* offset) : Collider(owner)
 {
+    m_colliderScale = scale; 
+    m_colliderOffset = offset; 
     isSquare = true;
 }
 
 SquareCollider::~SquareCollider()
 {
     delete m_colliderScale;
+    delete m_colliderOffset;
 }
+
 
 void SquareCollider::Draw()
 {

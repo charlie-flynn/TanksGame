@@ -52,7 +52,7 @@ void TankBottom::Update(double deltaTime)
 		Vector2() = { GetTransform()->GetGlobalScale().x * 50, GetTransform()->GetGlobalScale().y * 50 }, DARKGREEN);
 
 	// draw gem counter
-	DrawText(std::to_string(m_gems).c_str(), 10, 10, 20, BLUE);
+	DrawText(std::to_string(m_gems).c_str(), 10, 10, 30, BLUE);
 }
 
 void TankBottom::OnCollision()

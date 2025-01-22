@@ -34,7 +34,7 @@ void TankBottom::Update(double deltaTime)
 		GetTransform()->Translate(Vec2(IsKeyDown(KEY_D) - IsKeyDown(KEY_A), 
 			IsKeyDown(KEY_S) - IsKeyDown(KEY_W)).getNormalized() * m_speed * deltaTime);
 
-		if (GetTransform()->GetGlobalPosition().x > GetScreenWidth())
+		if (GetTransform()->GetGlobalPosition().x > GetScreenWidth() - 50)
 			GetTransform()->Translate(Vec2(-2, 0));
 
 		if (GetTransform()->GetGlobalPosition().x < 0)

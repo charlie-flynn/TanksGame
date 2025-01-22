@@ -5,7 +5,7 @@
 
 Gem::Gem() : Actor("Gem")
 {
-	AddComponent<SquareCollider>(m_collider = new SquareCollider(new Vec2(15, 15), this));
+	AddComponent<SquareCollider>(m_collider = new SquareCollider(new Vec2(30, 30), this, new Vec2(-15, -15)));
 }
 
 Gem::~Gem()
